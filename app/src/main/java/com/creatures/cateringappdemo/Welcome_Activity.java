@@ -2,6 +2,7 @@ package com.creatures.cateringappdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +44,12 @@ public class Welcome_Activity extends AppCompatActivity {
 
         welcome_skip_iv=(ImageView)findViewById(R.id.welcome_skip_image_view);
 
-
+        welcome_skip_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
+            }
+        });
 
         //for Login Layout
         welcome_login_btn.setOnClickListener(new View.OnClickListener() {
