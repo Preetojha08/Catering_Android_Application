@@ -17,22 +17,26 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class Home_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    RecyclerView recyclerView_cat,recyclerView_product;
+    RecyclerView rv_food_by_cat,rv_book_by_thali;
+    TextView tv_viewall_cat,tv_viewall_thali;
+    /*
 
     List<String> cat_title;
     List<Integer> cat_img;
 
     List<String> pro_title;
     List<Integer> pro_img;
-    DrawerLayout drawer;
 
+     */
+    DrawerLayout drawer;
     LinearLayoutManager HorizontalLayout;
 
-    TextView tv_viewall_cat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +47,12 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Catering App");
 
+        rv_food_by_cat=(RecyclerView)findViewById(R.id.recyclerView_food_by_cat);
+        rv_book_by_thali=(RecyclerView)findViewById(R.id.recyclerView_book_by_thali);
+        tv_viewall_cat=(TextView)findViewById(R.id.tv_view_all_category);
+        tv_viewall_thali=(TextView)findViewById(R.id.tv_view_all_thali);
+
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        setTitle("NGO System Pro");
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -52,6 +60,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //navigationView.setItemIconTintList(null);
+
         navigationView.setNavigationItemSelectedListener(this);
 
     }

@@ -101,7 +101,7 @@
                                     android:text="Food By Categories"
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
-                                    app:layout_constraintBottom_toTopOf="@+id/recyclerView_Categories"
+                                    app:layout_constraintBottom_toTopOf="@+id/recyclerView_food_by_cat"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +122,7 @@
                                     app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
                                 <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/recyclerView_Categories"
+                                    android:id="@+id/recyclerView_food_by_cat"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="36dp"
@@ -141,14 +141,14 @@
                                     android:text="Book By Thali"
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
-                                    app:layout_constraintBottom_toTopOf="@+id/recyclerView_product"
+                                    app:layout_constraintBottom_toTopOf="@+id/recyclerView_book_by_thali"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_Categories" />
+                                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_by_cat" />
 
                                 <TextView
-                                    android:id="@+id/tv_view_all_product"
+                                    android:id="@+id/tv_view_all_thali"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
@@ -158,10 +158,10 @@
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.933"
                                     app:layout_constraintStart_toEndOf="@+id/textView5"
-                                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_Categories" />
+                                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_by_cat" />
 
                                 <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/recyclerView_product"
+                                    android:id="@+id/recyclerView_book_by_thali"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="36dp"
@@ -170,7 +170,7 @@
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.461"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_Categories"
+                                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_by_cat"
                                     app:layout_constraintVertical_bias="1.0" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
