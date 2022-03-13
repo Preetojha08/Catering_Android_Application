@@ -11,6 +11,7 @@
         android:theme="@style/Theme.CateringAppDemo">
         <activity
             android:name=".Home_Activity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".Welcome_Activity"

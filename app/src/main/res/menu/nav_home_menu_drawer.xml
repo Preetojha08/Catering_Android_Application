@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single" >
+        <item android:title="E - Commerce Application">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_event"
+
+                    android:title="Home" />
+
+                <item
+                    android:id="@+id/nav_help"
+
+                    android:title="Cart" />
+
+                <item
+                    android:id="@+id/nav_motivational"
+
+                    android:title="Orders" />
+
+                <item
+                    android:id="@+id/nav_job"
+
+                    android:title="Shop By Categories" />
+
+            </menu>
+
+        </item>
+
+        <item android:title="About US">
+            <menu>
+
+
+                <item
+                    android:id="@+id/nav_vision"
+
+                    android:title="Vision" />
+
+                <item
+                    android:id="@+id/nav_info"
+
+                    android:title="Info" />
+
+                <item
+                    android:id="@+id/nav_feedback"
+
+                    android:title="Feedback" />
+
+            </menu>
+        </item>
+
+        <item android:title="Profile">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_setting"
+
+                    android:title="Setting" />
+
+                <item
+                    android:id="@+id/nav_logout"
+
+                    android:title="Logout" />
+
+            </menu>
+
+        </item>
+
+
+    </group>
+
+
+</menu>
