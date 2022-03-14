@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Home_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,14 +30,15 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
     List<String> cat_title;
     List<Integer> cat_img;
-
-    List<String> pro_title;
-    List<Integer> pro_img;
-
      */
+
+    List<String> foodbycat_title;
+    List<Integer> foodbycat_img;
+
+    RecyclerViewAdapter adapter;
+
     DrawerLayout drawer;
     LinearLayoutManager HorizontalLayout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,30 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         tv_viewall_cat=(TextView)findViewById(R.id.tv_view_all_category);
         tv_viewall_thali=(TextView)findViewById(R.id.tv_view_all_thali);
 
+        foodbycat_img = new ArrayList<>();
+        foodbycat_title = new ArrayList<>();
+
+        foodbycat_title.add("Fast Food");
+        foodbycat_title.add("Chinese Food");
+        foodbycat_title.add("Welcome Drinks");
+        foodbycat_title.add("Non Veg Food");
+        foodbycat_title.add("Sweet Dish");
+
+        foodbycat_img.add(R.drawable.fast_food);
+        foodbycat_img.add(R.drawable.chinese);
+        foodbycat_img.add(R.drawable.welcome_drink);
+        foodbycat_img.add(R.drawable.non_veg);
+        foodbycat_img.add(R.drawable.sweet);
+
+        adapter = new RecyclerViewAdapter(foodbycat_title,foodbycat_img,this);
+        HorizontalLayout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+
+        rv_food_by_cat.setLayoutManager(HorizontalLayout);
+        rv_food_by_cat.setAdapter(adapter);
+
+        //Drawer Code
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -60,7 +85,6 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //navigationView.setItemIconTintList(null);
-
         navigationView.setNavigationItemSelectedListener(this);
 
     }
