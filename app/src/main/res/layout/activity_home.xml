@@ -18,8 +18,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:pointerIcon="hand"
-        app:itemIconTint="@color/black"
         android:fitsSystemWindows="false"
         app:menu="@menu/nav_home_menu_drawer" />
 

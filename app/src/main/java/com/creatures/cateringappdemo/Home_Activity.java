@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -43,10 +44,13 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
     DrawerLayout drawer;
     LinearLayoutManager HorizontalLayout;
 
+    TextView tool_bar_tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_home_portal);
         setSupportActionBar(toolbar);
@@ -88,12 +92,13 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         bookbythali_title.add("Basic Thali");
         bookbythali_title.add("Nawab Thali");
         bookbythali_title.add("Hindustani Thali");
-        bookbythali_title.add("Maharaja Thali");
+        bookbythali_title.add("Party Thali");
 
         bookbythali_img.add(R.drawable.basic_thali);
-        bookbythali_img.add(R.drawable.prince_thali);
+        bookbythali_img.add(R.drawable.delux_thali);
         bookbythali_img.add(R.drawable.india_thali);
-        bookbythali_img.add(R.drawable.king_thali);
+        bookbythali_img.add(R.drawable.party_thali);
+
 
         new_adapter = new RecyclerViewAdapter(bookbythali_title,bookbythali_img,this,20);
         GridLayoutManager layoutManager=new GridLayoutManager(this,2);
