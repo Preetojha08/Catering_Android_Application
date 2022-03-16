@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_2sdp"
+    android:gravity="center"
+    android:layout_marginHorizontal="@dimen/_5sdp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="@dimen/_130sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:src="@drawable/prince_thali"
+
+        android:id="@+id/image_view_bookbythali"
+        android:padding="@dimen/_5sdp"/>
+
+    <TextView
+        android:id="@+id/text_view_bookbythali"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/akaya_telivigala"
+        android:gravity="center"
+        android:textSize="@dimen/_13sdp"
+        android:text="Hello World"
+        android:textColor="@color/black" />
+
+</LinearLayout>
