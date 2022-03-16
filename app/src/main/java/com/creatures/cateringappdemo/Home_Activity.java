@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,7 +36,10 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
     List<String> foodbycat_title;
     List<Integer> foodbycat_img;
 
-    RecyclerViewAdapter adapter;
+    List<String> bookbythali_title;
+    List<Integer> bookbythali_img;
+
+    RecyclerViewAdapter adapter,new_adapter;
 
     DrawerLayout drawer;
     LinearLayoutManager HorizontalLayout;
@@ -54,6 +58,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         tv_viewall_cat=(TextView)findViewById(R.id.tv_view_all_category);
         tv_viewall_thali=(TextView)findViewById(R.id.tv_view_all_thali);
 
+        //Food by Cat
         foodbycat_img = new ArrayList<>();
         foodbycat_title = new ArrayList<>();
 
@@ -69,11 +74,34 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         foodbycat_img.add(R.drawable.non_veg);
         foodbycat_img.add(R.drawable.sweet);
 
-        adapter = new RecyclerViewAdapter(foodbycat_title,foodbycat_img,this);
+        adapter = new RecyclerViewAdapter(foodbycat_title,foodbycat_img,this,10);
         HorizontalLayout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
         rv_food_by_cat.setLayoutManager(HorizontalLayout);
         rv_food_by_cat.setAdapter(adapter);
+
+        //Book By thali
+
+        bookbythali_title = new ArrayList<>();
+        bookbythali_img = new ArrayList<>();
+
+        bookbythali_title.add("Basic Thali");
+        bookbythali_title.add("Nawab Thali");
+        bookbythali_title.add("Hindustani Thali");
+        bookbythali_title.add("Maharaja Thali");
+
+        bookbythali_img.add(R.drawable.basic_thali);
+        bookbythali_img.add(R.drawable.prince_thali);
+        bookbythali_img.add(R.drawable.india_thali);
+        bookbythali_img.add(R.drawable.king_thali);
+
+        new_adapter = new RecyclerViewAdapter(bookbythali_title,bookbythali_img,this,20);
+        GridLayoutManager layoutManager=new GridLayoutManager(this,2);
+
+        rv_book_by_thali.setLayoutManager(layoutManager);
+        //rv_book_by_thali.setLayoutManager(HorizontalLayout);
+        rv_book_by_thali.setAdapter(new_adapter);
+
 
         //Drawer Code
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
