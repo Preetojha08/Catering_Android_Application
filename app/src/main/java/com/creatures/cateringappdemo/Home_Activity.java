@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.navigation.NavigationView;
 
 import org.w3c.dom.Text;
@@ -27,11 +29,8 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
     RecyclerView rv_food_by_cat,rv_book_by_thali;
     TextView tv_viewall_cat,tv_viewall_thali;
-    /*
 
-    List<String> cat_title;
-    List<Integer> cat_img;
-     */
+    ImageSlider home_imageSlider;
 
     List<String> foodbycat_title;
     List<Integer> foodbycat_img;
@@ -52,6 +51,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_home_portal);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Catering App");
+
 
         rv_food_by_cat=(RecyclerView)findViewById(R.id.recyclerView_food_by_cat);
         rv_book_by_thali=(RecyclerView)findViewById(R.id.recyclerView_book_by_thali);
@@ -101,6 +101,20 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         rv_book_by_thali.setLayoutManager(layoutManager);
         //rv_book_by_thali.setLayoutManager(HorizontalLayout);
         rv_book_by_thali.setAdapter(new_adapter);
+
+        //Image Slider
+
+        home_imageSlider=(ImageSlider)findViewById(R.id.home_image_slider);
+
+        List<SlideModel> slide_image_models = new ArrayList<>();
+
+        slide_image_models.add(new SlideModel(R.drawable.one));
+        slide_image_models.add(new SlideModel(R.drawable.two));
+        slide_image_models.add(new SlideModel(R.drawable.three));
+        slide_image_models.add(new SlideModel(R.drawable.four));
+        slide_image_models.add(new SlideModel(R.drawable.five));
+
+        home_imageSlider.setImageList(slide_image_models);
 
 
         //Drawer Code
