@@ -61,6 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         {
             view_oncreate = layoutInflater.inflate(R.layout.food_deatils,parent,false);
         }
+
         else {
             view_oncreate = layoutInflater.inflate(R.layout.food_by_categories,parent,false);
         }
@@ -94,6 +95,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.food_destails_sub_title_textview.setText(sub_title.get(position));
             holder.food_deatils_imgaeview.setImageResource(images.get(position));
         }
+
 
 
     }

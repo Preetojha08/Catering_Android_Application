@@ -60,6 +60,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         getSupportActionBar().setTitle("Catering App");
 
 
+
         rv_food_by_cat=(RecyclerView)findViewById(R.id.recyclerView_food_by_cat);
         rv_book_by_thali=(RecyclerView)findViewById(R.id.recyclerView_book_by_thali);
         tv_viewall_cat=(TextView)findViewById(R.id.tv_view_all_category);
@@ -69,6 +70,13 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Home_Activity.this,ViewAllThaliActivity.class));
+            }
+        });
+
+        tv_viewall_cat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home_Activity.this,ViewAllCategoriesActivity.class));
             }
         });
 
@@ -82,9 +90,9 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         foodbycat_title.add("Non Veg Food");
         foodbycat_title.add("Sweet Dish");
 
-        foodbycat_img.add(R.drawable.fast_food);
+        foodbycat_img.add(R.drawable.fastfood);
         foodbycat_img.add(R.drawable.chinese);
-        foodbycat_img.add(R.drawable.welcome_drink);
+        foodbycat_img.add(R.drawable.drinks);
         foodbycat_img.add(R.drawable.non_veg);
         foodbycat_img.add(R.drawable.sweet);
 
@@ -141,7 +149,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        //navigationView.setItemIconTintList(null);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
     }

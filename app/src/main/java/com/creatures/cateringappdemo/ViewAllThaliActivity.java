@@ -53,8 +53,6 @@ public class ViewAllThaliActivity extends AppCompatActivity {
         viewallthali_sub_title.add("1 Types of Sweet, 1 Types of Idli, 1 Types of Dosa, Sambhar Dal, 2 Types of Chatni, 1 Types of Rice, Dahi");
         viewallthali_sub_title.add("2 Types of Sweet, 2 Types of Subji, 2 Types of Bread, 2 Types of Dal, 1 Types of Rice, 2 Types of Salad, Papad, 1 Types of Raita");
 
-
-
         viewallthali_img.add(R.drawable.basic_thali);
         viewallthali_img.add(R.drawable.india_thali);
         viewallthali_img.add(R.drawable.delux_thali);
@@ -63,6 +61,8 @@ public class ViewAllThaliActivity extends AppCompatActivity {
         viewallthali_img.add(R.drawable.party_thali);
         viewallthali_img.add(R.drawable.south_thali);
         viewallthali_img.add(R.drawable.punjabi_thali);
+        //viewallthali_img.add(R.drawable.chinese);
+
 
         recyclerViewAdapter=new RecyclerViewAdapter(viewallthali_title,viewallthali_sub_title,viewallthali_img,this,40);
         recyclerView_viewallthali.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
