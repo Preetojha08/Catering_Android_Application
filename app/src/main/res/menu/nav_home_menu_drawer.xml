@@ -25,10 +25,7 @@
                     android:icon="@drawable/event"
                     android:title="Events" />
 
-                <item
-                    android:id="@+id/nav_services"
-                    android:icon="@drawable/services"
-                    android:title="Services" />
+
 
             </menu>
 
@@ -43,15 +40,16 @@
                     android:icon="@drawable/vision"
                     android:title="Vision" />
 
-                <item
-                    android:id="@+id/nav_info"
-                    android:icon="@drawable/info"
-                    android:title="Info" />
 
                 <item
                     android:id="@+id/nav_feedback"
                     android:icon="@drawable/feedback"
                     android:title="Feedback" />
+
+                <item
+                    android:id="@+id/nav_info"
+                    android:icon="@drawable/info"
+                    android:title="Contact US" />
 
             </menu>
         </item>

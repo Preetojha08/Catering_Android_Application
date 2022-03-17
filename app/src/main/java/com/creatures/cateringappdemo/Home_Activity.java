@@ -184,21 +184,18 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 break;
 
             case (R.id.nav_logout):
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Bye, \uD83D\uDC4B\uD83C ", Toast.LENGTH_SHORT).show();
                 break;
 
             case (R.id.nav_Events):
                 startActivity(new Intent(Home_Activity.this,EventActivity.class));
-                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
+
                 break;
 
             case (R.id.nav_home):
-                Toast.makeText(this, "Motivational", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Welcome Home", Toast.LENGTH_SHORT).show();
                 break;
 
-            case (R.id.nav_services):
-                Toast.makeText(this, "Job", Toast.LENGTH_SHORT).show();
-                break;
         }
         drawer.closeDrawer(GravityCompat.START);
 
