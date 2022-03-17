@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +64,13 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         rv_book_by_thali=(RecyclerView)findViewById(R.id.recyclerView_book_by_thali);
         tv_viewall_cat=(TextView)findViewById(R.id.tv_view_all_category);
         tv_viewall_thali=(TextView)findViewById(R.id.tv_view_all_thali);
+
+        tv_viewall_thali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home_Activity.this,ViewAllThaliActivity.class));
+            }
+        });
 
         //Food by Cat
         foodbycat_img = new ArrayList<>();
@@ -137,10 +147,21 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater= getMenuInflater();
+        menuInflater.inflate(R.menu.top_menu, menu);
+
+        MenuItem item=menu.findItem(R.id.nav_search);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()){
-            case (R.id.nav_cart):
-                Toast.makeText(this , "Your Cart" , Toast.LENGTH_SHORT).show();
+
+            case (R.id.nav_search):
+                Toast.makeText(this , "Your Search" , Toast.LENGTH_SHORT).show();
                 break;
         }
         return true;
@@ -158,15 +179,16 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
                 break;
 
-            case (R.id.nav_help):
+            case (R.id.nav_Events):
+                startActivity(new Intent(Home_Activity.this,EventActivity.class));
                 Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
                 break;
 
-            case (R.id.nav_motivational):
+            case (R.id.nav_home):
                 Toast.makeText(this, "Motivational", Toast.LENGTH_SHORT).show();
                 break;
 
-            case (R.id.nav_job):
+            case (R.id.nav_services):
                 Toast.makeText(this, "Job", Toast.LENGTH_SHORT).show();
                 break;
         }

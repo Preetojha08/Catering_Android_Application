@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Welcome_Activity extends AppCompatActivity {
 
@@ -21,6 +24,9 @@ public class Welcome_Activity extends AppCompatActivity {
     TextView register_textview,login_textview;
 
     ImageView welcome_skip_iv;
+
+    TextInputEditText tiet_username,tiet_password,tiet_mobile_no,tiet_con_password;
+    Button sign_up_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +125,60 @@ public class Welcome_Activity extends AppCompatActivity {
                 registration_layout.startAnimation(animation_second);
             }
         });
+
+
+        //Registration Process
+
+        tiet_username=(TextInputEditText)findViewById(R.id.text_input_edit_text_reg_user_name);
+        tiet_mobile_no=(TextInputEditText)findViewById(R.id.text_input_edit_text_reg_user_mobile);
+        tiet_password=(TextInputEditText)findViewById(R.id.text_input_edit_text_reg_user_password);
+        tiet_con_password=(TextInputEditText)findViewById(R.id.text_input_edit_text_reg_user_confirm_password);
+
+        sign_up_btn=(Button)findViewById(R.id.sign_up_button);
+
+        sign_up_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String username,mobile_no,password,con_password;
+
+                username=tiet_username.getText().toString().trim();
+                mobile_no=tiet_mobile_no.getText().toString().trim();
+                password=tiet_password.getText().toString().trim();
+                con_password=tiet_con_password.getText().toString().trim();
+
+                if (username.isEmpty() || username.equals(" ") || mobile_no.isEmpty() || mobile_no.equals(" ") || password.isEmpty() || password.equals(" ") || con_password.isEmpty() || con_password.equals(" "))
+                {
+                   if (username.isEmpty() || username.equals(" "))
+                   {
+                       tiet_username.setError("Enter Usernmae");
+                   }
+
+                   if (mobile_no.isEmpty() || mobile_no.equals(" "))
+                   {
+                       tiet_mobile_no.setError("Enter Mobile NO");
+                   }
+
+                   if (password.isEmpty() || password.equals(" "))
+                   {
+                       tiet_password.setError("Enter Password");
+                   }
+
+                   if (con_password.isEmpty() || con_password.equals(" "))
+                   {
+                       tiet_con_password.setError("Enter Password");
+                   }
+
+                    Toast.makeText(Welcome_Activity.this, "Fields are Empty", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+
+
+            }
+        });
+
 
 
 

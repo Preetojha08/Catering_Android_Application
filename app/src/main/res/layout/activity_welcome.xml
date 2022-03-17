@@ -15,6 +15,7 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:gravity="center"
+        android:visibility="gone"
         android:orientation="vertical"
         android:padding="@dimen/_5sdp">
 
@@ -39,6 +40,8 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:gravity="center"
+        android:visibility="gone"
+        android:layout_marginHorizontal="@dimen/_15sdp"
         android:orientation="vertical"
         android:padding="@dimen/_5sdp">
 
@@ -92,7 +95,7 @@
                 android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@null">
+                app:passwordToggleTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_input_edit_text_log_user_password"
@@ -211,9 +214,11 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/_15sdp"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/_5sdp">
+        android:padding="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_15sdp">
 
         <TextView
             android:layout_width="match_parent"
@@ -284,7 +289,7 @@
                 android:textColorHint="#000"
                 android:textSize="16sp"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@null">
+                app:passwordToggleTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_input_edit_text_reg_user_password"
@@ -307,7 +312,7 @@
                 android:textColorHint="#000"
                 android:textSize="16sp"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@null">
+                app:passwordToggleTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_input_edit_text_reg_user_confirm_password"

@@ -63,6 +63,7 @@
 
                         <RelativeLayout
                             android:layout_width="match_parent"
+                            android:gravity="center"
                             android:layout_height="match_parent">
 
                                 <TextView
@@ -70,6 +71,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentLeft="true"
+                                    android:layout_centerVertical="true"
                                     android:layout_marginTop="8dp"
                                     android:fontFamily="@font/abril_fatface"
                                     android:text="Food By Categories"
@@ -82,8 +84,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
                                     android:layout_marginHorizontal="@dimen/_5sdp"
-                                    android:layout_marginTop="11dp"
                                     android:fontFamily="@font/abril_fatface"
                                     android:text="View All"
                                     android:textColor="#7E7C7C"
@@ -191,6 +193,7 @@
                                     android:layout_alignParentLeft="true"
                                     android:fontFamily="@font/abril_fatface"
                                     android:text="Book By Thali"
+                                    android:layout_centerVertical="true"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_14sdp"
                                     android:textStyle="bold" />
@@ -199,9 +202,9 @@
                                     android:id="@+id/tv_view_all_thali"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
                                     android:layout_alignParentRight="true"
                                     android:layout_marginHorizontal="@dimen/_5sdp"
+                                    android:layout_centerVertical="true"
                                     android:fontFamily="@font/abril_fatface"
                                     android:text="View All"
                                     android:textColor="#7E7C7C"

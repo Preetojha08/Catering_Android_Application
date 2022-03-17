@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CateringAppDemo">
         <activity
-            android:name=".Home_Activity"
+            android:name=".ViewAllThaliActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
+        <activity
+            android:name=".EventActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Home_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Welcome_Activity"
             android:exported="false" />
