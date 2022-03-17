@@ -26,7 +26,7 @@ public class ViewAllCategoriesActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_viewallfoodbycat);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Order By Categories");
+        getSupportActionBar().setTitle("   Order By Categories");
 
         recyclerView_viewallfoodbycat=(RecyclerView)findViewById(R.id.viewallfoodbycat_recycler_view);
 

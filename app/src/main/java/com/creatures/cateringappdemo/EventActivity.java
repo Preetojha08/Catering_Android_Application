@@ -25,7 +25,7 @@ public class EventActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_event);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Evnets");
+        getSupportActionBar().setTitle("   Evnets");
 
         event_recyclerView=(RecyclerView)findViewById(R.id.event_recycler_view);
 

@@ -27,7 +27,7 @@ public class ViewAllThaliActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_viewallthali);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Thali");
+        getSupportActionBar().setTitle("   Order By Thali");
 
         recyclerView_viewallthali=(RecyclerView)findViewById(R.id.recyclerview_view_all_Thali);
 

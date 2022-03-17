@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CateringAppDemo">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ViewAllCategoriesActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViewAllThaliActivity"
             android:exported="false"

@@ -179,8 +179,9 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId())
         {
-            case (R.id.nav_setting):
-                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+            case (R.id.nav_profile):
+                Toast.makeText(this, "Manage Your Profile", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Home_Activity.this,ProfileActivity.class));
                 break;
 
             case (R.id.nav_logout):
