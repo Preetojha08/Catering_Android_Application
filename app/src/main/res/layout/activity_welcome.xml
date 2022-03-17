@@ -8,14 +8,22 @@
     android:padding="@dimen/_5sdp"
     tools:context=".Welcome_Activity">
 
+    <ImageView
+        android:id="@+id/welcome_logo_image_view"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:src="@drawable/hello_world" />
+
     <LinearLayout
         android:id="@+id/welcome_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_30sdp"
         android:gravity="center"
-        android:visibility="gone"
         android:orientation="vertical"
         android:padding="@dimen/_5sdp">
 
@@ -37,11 +45,11 @@
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome_logo_image_view"
         android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:visibility="gone"
         android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/_5sdp">
 
@@ -127,9 +135,8 @@
             android:layout_marginTop="15dp"
             android:fontFamily="@font/abril_fatface"
             android:text="Forgot Password "
-            android:textColor="#9C27B0"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textColor="#0077b6"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/text_view_or_logout"
@@ -200,7 +207,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abril_fatface"
                 android:text="  Sign Up"
-                android:textColor="#5C00FF"
+                android:textColor="#0077b6"
                 android:textSize="15sp" />
 
         </LinearLayout>
@@ -212,7 +219,8 @@
         android:id="@+id/registration_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/welcome_logo_image_view"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="@dimen/_15sdp"
         android:gravity="center"
@@ -360,7 +368,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abril_fatface"
                 android:text="  Sign In"
-                android:textColor="#5C00FF"
+                android:textColor="#0077b6"
                 android:textSize="15sp" />
 
         </LinearLayout>

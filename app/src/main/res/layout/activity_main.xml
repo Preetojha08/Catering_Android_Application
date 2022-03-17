@@ -13,15 +13,4 @@
         android:layout_centerInParent="true"
         android:src="@drawable/hello_world"/>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:fontFamily="@font/abril_fatface"
-        android:textSize="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_40sdp"
-        android:layout_centerHorizontal="true"
-        android:text="Catering Android Application"/>
-
 </RelativeLayout>

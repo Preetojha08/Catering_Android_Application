@@ -32,19 +32,21 @@ public class EventActivity extends AppCompatActivity {
         event_title = new ArrayList<>();
         event_img = new ArrayList<>();
 
-        event_title.add("Wedding Ceremony");
+
         event_title.add("Reception Ceremony");
         event_title.add("Engagement Ceremony");
 
         event_title.add("Birthday Party");
+        event_title.add("Wedding Ceremony");
         event_title.add("Corporate Event");
         event_title.add("Inauguration Ceremony");
 
-        event_img.add(R.drawable.wedding);
+
         event_img.add(R.drawable.eeception);
         event_img.add(R.drawable.engagement);
 
         event_img.add(R.drawable.party);
+        event_img.add(R.drawable.wedding);
         event_img.add(R.drawable.corporate);
         event_img.add(R.drawable.inauguration);
 
