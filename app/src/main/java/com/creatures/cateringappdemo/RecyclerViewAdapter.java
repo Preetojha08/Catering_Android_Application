@@ -15,10 +15,21 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.recycler_view_holder> {
 
     List<String> title;
+    List<String> sub_title;
     List<Integer> images;
     Context context;
-    LayoutInflater layoutInflater;
     int card_val=0;
+    LayoutInflater layoutInflater;
+
+
+    public RecyclerViewAdapter(List<String> title, List<String> sub_title, List<Integer> images, Context context, int card_val) {
+        this.title = title;
+        this.sub_title = sub_title;
+        this.images = images;
+        this.context = context;
+        this.layoutInflater = LayoutInflater.from(context);
+        this.card_val = card_val;
+    }
 
     public RecyclerViewAdapter(List<String> title, List<Integer> images, Context context,int card_val) {
         this.title = title;
@@ -79,7 +90,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
         if (card_val==40)
         {
-            holder.food_destails_textview.setText(title.get(position));
+            holder.food_destails_title_textview.setText(title.get(position));
+            holder.food_destails_sub_title_textview.setText(sub_title.get(position));
             holder.food_deatils_imgaeview.setImageResource(images.get(position));
         }
 
@@ -100,7 +112,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView event_text;
 
         ImageView food_deatils_imgaeview;
-        TextView food_destails_textview;
+        TextView food_destails_title_textview,food_destails_sub_title_textview;
 
 
 
@@ -126,7 +138,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             if (card_val==40)
             {
                 food_deatils_imgaeview=(ImageView)itemView.findViewById(R.id.food_details_imageview);
-                food_destails_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
+                food_destails_title_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
+                food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
+
             }
 
         }

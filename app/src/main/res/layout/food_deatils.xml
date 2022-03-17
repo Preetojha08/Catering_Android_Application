@@ -54,13 +54,14 @@
 
 
                     <TextView
+                        android:id="@+id/food_details_dec_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/food_details_title_textview"
                         android:layout_marginHorizontal="@dimen/_8sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:id="@+id/food_details_dec_textview"
                         android:layout_marginBottom="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_4sdp"
                         android:fontFamily="@font/akaya_telivigala"
                         android:text="Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world "
                         android:textSize="@dimen/_10sdp" />
