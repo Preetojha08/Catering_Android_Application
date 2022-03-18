@@ -26,7 +26,8 @@ public class Welcome_Activity extends AppCompatActivity {
     ImageView welcome_skip_iv;
 
     TextInputEditText tiet_username,tiet_password,tiet_mobile_no,tiet_con_password;
-    Button sign_up_btn;
+    TextInputEditText tiet_log_username,tiet_log_password;
+    Button sign_up_btn,sign_in_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,17 +171,73 @@ public class Welcome_Activity extends AppCompatActivity {
                    }
 
                     Toast.makeText(Welcome_Activity.this, "Fields are Empty", Toast.LENGTH_SHORT).show();
-
                 }
+                else
+                {
+                    Toast.makeText(Welcome_Activity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                    login_layout.setVisibility(View.VISIBLE);
+                    registration_layout.setVisibility(View.GONE);
 
+                    welcome_layout.setVisibility(View.GONE);
 
+                    Animation animation_first = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade);
+                    Animation animation_second = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.up_move);
 
+                    registration_layout.startAnimation(animation_first);
+                    login_layout.startAnimation(animation_second);
+                }
 
             }
         });
 
+        //Login
 
+        tiet_log_username=(TextInputEditText) findViewById(R.id.text_input_edit_text_log_user_name);
+        tiet_log_password=(TextInputEditText) findViewById(R.id.text_input_edit_text_log_user_password);
 
+        sign_in_btn=(Button)findViewById(R.id.sign_in_button);
+
+        sign_in_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username,password;
+
+                username=tiet_log_username.getText().toString();
+                password=tiet_log_password.getText().toString();
+
+                if (username.isEmpty() || password.isEmpty())
+                {
+                    if(username.isEmpty())
+                    {
+                        tiet_log_username.setError("Enter Username");
+                    }
+                    else
+                    {
+                        tiet_log_password.setError("Enter Password");
+                    }
+                }
+                else if (username.equals("Alpesh Solanki ") && password.equals("P@ssw0rd"))
+                {
+                    Toast.makeText(Welcome_Activity.this, "Welcome Alpesh Sir", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
+                }
+                else if (username.equals("Preet Ojha") && password.equals("P@ssw0rd"))
+                {
+                    Toast.makeText(Welcome_Activity.this, "Welcome Alpesh Sir", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
+                }
+                else if (username.equals("9898987878") && password.equals("P@ssw0rd"))
+                {
+                    Toast.makeText(Welcome_Activity.this, "Welcome Alpesh Sir", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
+                }
+                else
+                {
+                    Toast.makeText(Welcome_Activity.this, "Wrong Username or Password", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
 
     }

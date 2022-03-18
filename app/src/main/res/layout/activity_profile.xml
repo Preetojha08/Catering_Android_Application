@@ -150,7 +150,7 @@
                         android:background="@color/white"
                         android:drawableLeft="@drawable/newusercopy"
                         android:drawablePadding="@dimen/_10sdp"
-                        android:text="Alpesh Solanki"
+                        android:text="Preet Ojha"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,7 +166,7 @@
                         android:background="@color/white"
                         android:drawableLeft="@drawable/mailcopy"
                         android:drawablePadding="@dimen/_10sdp"
-                        android:text="alpesh@gmail.com"
+                        android:text="preet08@gmail.com.com"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
