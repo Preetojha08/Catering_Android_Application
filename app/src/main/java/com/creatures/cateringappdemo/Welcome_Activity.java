@@ -5,16 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class Welcome_Activity extends AppCompatActivity {
 
@@ -29,6 +34,8 @@ public class Welcome_Activity extends AppCompatActivity {
     TextInputEditText tiet_log_username,tiet_log_password;
     Button sign_up_btn,sign_in_btn;
 
+    ProgressBar progress_bar_reg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,8 @@ public class Welcome_Activity extends AppCompatActivity {
         login_layout=(LinearLayout)findViewById(R.id.login_layout);
         registration_layout=(LinearLayout)findViewById(R.id.registration_layout);
         welcome_layout=(LinearLayout)findViewById(R.id.welcome_layout);
+
+        progress_bar_reg=(ProgressBar)findViewById(R.id.progress_bar_reg);
 
         login_layout.setVisibility(View.GONE);
         registration_layout.setVisibility(View.GONE);
@@ -174,17 +183,61 @@ public class Welcome_Activity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Welcome_Activity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                    login_layout.setVisibility(View.VISIBLE);
-                    registration_layout.setVisibility(View.GONE);
 
-                    welcome_layout.setVisibility(View.GONE);
+                    //Start ProgressBar first (Set visibility VISIBLE)
+                    progress_bar_reg.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Starting Write and Read data with URL
+                            //Creating array for parameters
+                            String[] field = new String[3];
+                            field[0] = "username";
+                            field[1] = "mobile_no";
+                            field[2] = "password";
+                            //field[3] = "email";
 
-                    Animation animation_first = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade);
-                    Animation animation_second = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.up_move);
+                            //Creating array for data
+                            String[] data = new String[3];
+                            data[0] = username;
+                            data[1] = mobile_no;
+                            data[2] = password;   //192.168.1.101 http://192.168.64.2/test_login/signup.php http://192.168.64.2/ http://192.168.64.2/new_post_test/post_signup.php http://192.168.64.2/test_login/signup.php
+                            //data[3] = email;
+                            //PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/signup_login_test/signup.php", "POST", field, data);
+                            PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/catering_project/sign_up.php", "POST", field, data);
+                            if (putData.startPut()) {
+                                if (putData.onComplete()) {
+                                    progress_bar_reg.setVisibility(View.GONE);
+                                    String result = putData.getResult();
+                                    if (result.equals("Sign Up Success"))
+                                    {
+                                        Toast.makeText(Welcome_Activity.this, ""+result, Toast.LENGTH_SHORT).show();
+                                        login_layout.setVisibility(View.VISIBLE);
+                                        registration_layout.setVisibility(View.GONE);
 
-                    registration_layout.startAnimation(animation_first);
-                    login_layout.startAnimation(animation_second);
+                                        welcome_layout.setVisibility(View.GONE);
+
+                                        Animation animation_first = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade);
+                                        Animation animation_second = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.up_move);
+
+                                        registration_layout.startAnimation(animation_first);
+                                        login_layout.startAnimation(animation_second);
+
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(Welcome_Activity.this, ""+result, Toast.LENGTH_SHORT).show();
+                                    }
+                                    //End ProgressBar (Set visibility to GONE)
+                                    Log.i("PutData", result);
+                                }
+                            }
+                            //End Write and Read data with URL
+                        }
+                    });
+                    //End of handler
+
                 }
 
             }
@@ -228,7 +281,7 @@ public class Welcome_Activity extends AppCompatActivity {
                 }
                 else if (username.equals("9898987878") && password.equals("P@ssw0rd"))
                 {
-                    Toast.makeText(Welcome_Activity.this, "Welcome Alpesh Sir", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Welcome_Activity.this, "Welcome Sir", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
                 }
                 else

@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/abril_fatface"
-                    android:text="Alpesh Solanki"
+                    android:text="Preet Ojha"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     app:layout_constraintBottom_toBottomOf="parent"
