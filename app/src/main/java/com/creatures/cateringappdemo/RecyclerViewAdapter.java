@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.denzcoskun.imageslider.models.SlideModel;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -16,10 +18,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     List<String> title;
     List<String> sub_title;
-    List<Integer> images;
     Context context;
+    List<SlideModel> slide_image_models;
     int card_val=0;
+    List<Integer> images;
     LayoutInflater layoutInflater;
+
+
+
+    public RecyclerViewAdapter(List<String> title, List<String> sub_title, Context context, List<SlideModel> slide_image_models, int card_val) {
+        this.title = title;
+        this.sub_title = sub_title;
+        this.context = context;
+        this.slide_image_models = slide_image_models;
+        this.layoutInflater = LayoutInflater.from(context);
+        this.card_val = card_val;
+    }
 
 
     public RecyclerViewAdapter(List<String> title, List<String> sub_title, List<Integer> images, Context context, int card_val) {

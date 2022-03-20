@@ -54,11 +54,9 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_home_portal);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Catering App");
-
 
 
         rv_food_by_cat=(RecyclerView)findViewById(R.id.recyclerView_food_by_cat);
