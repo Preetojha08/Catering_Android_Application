@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.denzcoskun.imageslider.models.SlideModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class ViewAllCategoriesActivity extends AppCompatActivity {
     List<String> viewallfoodbycat_title;
     List<String> viewallfoodbycat_sub_title;
     List<Integer> viewallfoodbycat_img;
+    
 
     RecyclerViewAdapter recyclerViewAdapter;
     RecyclerView recyclerView_viewallfoodbycat;
