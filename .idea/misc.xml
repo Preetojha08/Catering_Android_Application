@@ -17,9 +17,9 @@
         <entry key="app/src/main/res/layout/book_by_thali.xml" value="0.25" />
         <entry key="app/src/main/res/layout/event_cards.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/food_by_categories.xml" value="0.2947916666666667" />
-        <entry key="app/src/main/res/layout/food_deatils.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/food_deatils.xml" value="0.1" />
         <entry key="app/src/main/res/layout/food_details.xml" value="0.22552083333333334" />
-        <entry key="app/src/main/res/layout/home_content.xml" value="0.31108398437500007" />
+        <entry key="app/src/main/res/layout/home_content.xml" value="0.1" />
         <entry key="app/src/main/res/menu/nav_home_menu_drawer.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/menu/top_menu.xml" value="0.2947916666666667" />
       </map>

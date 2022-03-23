@@ -10,8 +10,8 @@
     <ImageView
         android:layout_width="@dimen/_60sdp"
         android:layout_height="@dimen/_60sdp"
-        android:src="@drawable/fastfood"
         android:id="@+id/image_view_foodbycat"
+        android:src="@drawable/fastfood"
         android:padding="@dimen/_5sdp"/>
 
     <TextView

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.List;
@@ -19,14 +20,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     List<String> title;
     List<String> sub_title;
     Context context;
-    List<SlideModel> slide_image_models;
+    List<List<SlideModel>> slide_image_models;
     int card_val=0;
     List<Integer> images;
     LayoutInflater layoutInflater;
 
 
 
-    public RecyclerViewAdapter(List<String> title, List<String> sub_title, Context context, List<SlideModel> slide_image_models, int card_val) {
+    public RecyclerViewAdapter(List<String> title, List<String> sub_title, Context context,  List<List<SlideModel>> slide_image_models, int card_val) {
         this.title = title;
         this.sub_title = sub_title;
         this.context = context;
@@ -107,7 +108,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         {
             holder.food_destails_title_textview.setText(title.get(position));
             holder.food_destails_sub_title_textview.setText(sub_title.get(position));
-            holder.food_deatils_imgaeview.setImageResource(images.get(position));
+            holder.food_deatils_imgaeview.setImageList(slide_image_models.get(position));
         }
 
 
@@ -127,7 +128,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView event_img;
         TextView event_text;
 
-        ImageView food_deatils_imgaeview;
+        ImageSlider food_deatils_imgaeview;
         TextView food_destails_title_textview,food_destails_sub_title_textview;
 
 
@@ -153,7 +154,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             if (card_val==40)
             {
-                food_deatils_imgaeview=(ImageView)itemView.findViewById(R.id.food_details_imageview);
+                food_deatils_imgaeview=(ImageSlider) itemView.findViewById(R.id.food_details_imageview);
                 food_destails_title_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
                 food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
 

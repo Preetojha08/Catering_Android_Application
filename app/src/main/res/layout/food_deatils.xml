@@ -83,11 +83,15 @@
 
     </LinearLayout>
 
-    <ImageView
+    <com.denzcoskun.imageslider.ImageSlider
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"
-        android:src="@drawable/punjabi_thali"
         android:id="@+id/food_details_imageview"
+        app:auto_cycle="true"
+        app:delay="0"
+        app:period="3000"
+        app:selected_dot="@color/purple_500"
+        app:unselected_dot="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
