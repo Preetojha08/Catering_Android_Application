@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SingleFoodDeatilsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_single_food_deatils"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            app:titleTextAppearance="@style/ToolbarTitleStyle"
+            app:titleTextColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:background="@color/purple_200"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/image_slider_single_food_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryDark"
+                    app:auto_cycle="true"
+                    app:delay="0"
+                    app:period="3000"
+                    app:selected_dot="@color/purple_500"
+                    app:unselected_dot="@color/purple_200" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textview_heading_singlefooddeatils"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom"
+                    android:forceDarkAllowed="true"
+                    android:padding="@dimen/_10sdp"
+                    android:fontFamily="@font/abril_fatface"
+                    android:text="fast Food"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_20sdp" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/adamina"
+            android:text="Items Deatils"
+            android:textColor="@color/purple_700"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview_items_singlefooddeatils"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:drawableStart="@drawable/item"
+            android:drawablePadding="@dimen/_5sdp"
+            android:fontFamily="@font/akaya_telivigala"
+            android:paddingRight="@dimen/_4sdp"
+            android:padding="@dimen/_4sdp"
+            android:text="Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world "
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview_counters_singlefooddeatils"
+            android:padding="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:fontFamily="@font/akaya_telivigala"
+            android:drawableStart="@drawable/stall"
+            android:drawablePadding="@dimen/_5sdp"
+            android:paddingRight="@dimen/_4sdp"
+            android:text="3 - 4 Counters Required"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview_money_singlefooddeatils"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:fontFamily="@font/akaya_telivigala"
+            android:paddingRight="@dimen/_4sdp"
+            android:drawableStart="@drawable/money"
+            android:padding="@dimen/_4sdp"
+            android:drawablePadding="@dimen/_5sdp"
+            android:text="Approx 20₹ Per Item "
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/_3sdp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:fontFamily="@font/adamina"
+        android:text="Add Inquiry"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_12sdp" />
+
+
+</RelativeLayout>
