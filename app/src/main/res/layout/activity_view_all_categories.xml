@@ -17,7 +17,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
         android:layout_height="match_parent"
         android:id="@+id/viewallfoodbycat_recycler_view"/>
 

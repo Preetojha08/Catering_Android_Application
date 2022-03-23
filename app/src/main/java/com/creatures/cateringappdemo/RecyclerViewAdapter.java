@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -13,6 +14,7 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.recycler_view_holder> {
@@ -24,6 +26,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     int card_val=0;
     List<Integer> images;
     LayoutInflater layoutInflater;
+    int pos=0;
 
 
 
@@ -113,15 +116,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.food_destails_title_textview.setText(title.get(position));
             holder.food_destails_sub_title_textview.setText(sub_title.get(position));
             holder.food_deatils_imgaeview.setImageList(slide_image_models.get(position));
+            pos=holder.getPosition();
         }
         if (card_val==50)
         {
             holder.food_destails_title_textview.setText(title.get(position));
             holder.food_destails_sub_title_textview.setText(sub_title.get(position));
             holder.food_deatils_imgaeview_iv.setImageResource(images.get(position));
+            pos=holder.getPosition();
         }
-
-
 
     }
 
@@ -142,6 +145,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView food_deatils_imgaeview_iv;
         TextView food_destails_title_textview,food_destails_sub_title_textview;
 
+        CardView card_view_food_deatils;
 
 
         public recycler_view_holder(@NonNull View itemView) {
@@ -165,28 +169,51 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             if (card_val==40)
             {
+
+                card_view_food_deatils=(CardView)itemView.findViewById(R.id.card_view_food_details);
                 food_deatils_imgaeview_iv=(ImageView) itemView.findViewById(R.id.food_details_imageview);
                 food_deatils_imgaeview=(ImageSlider) itemView.findViewById(R.id.food_details_image_slider);
                 food_destails_title_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
                 food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
-
                 food_deatils_imgaeview.setVisibility(View.VISIBLE);
                 food_deatils_imgaeview_iv.setVisibility(View.GONE);
+
+                card_view_food_deatils.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pos=getPosition();
+                        pos++;
+                        Toast.makeText(context, "Pressed: "+pos, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
 
             if (card_val==50)
             {
-
+                card_view_food_deatils=(CardView)itemView.findViewById(R.id.card_view_food_details);
                 food_deatils_imgaeview_iv=(ImageView) itemView.findViewById(R.id.food_details_imageview);
                 food_destails_title_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
                 food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
-
                 food_deatils_imgaeview_iv.setVisibility(View.VISIBLE);
+
+                card_view_food_deatils.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pos=getPosition();
+                        pos++;
+                        Toast.makeText(context, "Pressed: "+pos, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
 
         }
+
+
+
     }
+
+
 
 }

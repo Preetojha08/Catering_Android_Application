@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_100sdp"
             android:layout_weight="2"
+            android:id="@+id/card_view_food_details"
             app:cardBackgroundColor="@color/teal_100"
             android:outlineSpotShadowColor="@color/black"
             app:cardCornerRadius="@dimen/_10sdp"

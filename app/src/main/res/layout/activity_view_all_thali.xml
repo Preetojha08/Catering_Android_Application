@@ -21,6 +21,4 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:id="@+id/recyclerview_view_all_Thali"/>
 
-
-
 </LinearLayout>
