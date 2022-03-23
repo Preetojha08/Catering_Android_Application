@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_single_food_deatils.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_view_all_categories.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_view_all_thali.xml" value="0.28072916666666664" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.25" />
@@ -26,7 +27,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

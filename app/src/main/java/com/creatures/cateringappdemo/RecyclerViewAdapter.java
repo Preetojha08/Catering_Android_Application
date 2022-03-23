@@ -1,6 +1,7 @@
 package com.creatures.cateringappdemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,29 +102,66 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.food_by_cat_tv.setText(title.get(position));
             holder.food_by_cat_imageview.setImageResource(images.get(position));
         }
+
         if (card_val==20)
         {
             holder.book_by_thali_tv.setText(title.get(position));
             holder.book_by_thali_imageview.setImageResource(images.get(position));
         }
+
         if (card_val==30)
         {
             holder.event_text.setText(title.get(position));
             holder.event_img.setImageResource(images.get(position));
         }
+
         if (card_val==40)
         {
             holder.food_destails_title_textview.setText(title.get(position));
             holder.food_destails_sub_title_textview.setText(sub_title.get(position));
             holder.food_deatils_imgaeview.setImageList(slide_image_models.get(position));
-            pos=holder.getPosition();
+
+            holder.card_view_food_deatils.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    pos=holder.getPosition();
+                    pos++;
+                    Toast.makeText(context, "Pressed: "+pos, Toast.LENGTH_SHORT).show();
+
+                    if (pos==1)
+                    {
+                        Intent i = new Intent(context,SingleFoodDeatilsActivity.class);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+
+                }
+            });
         }
+
         if (card_val==50)
         {
             holder.food_destails_title_textview.setText(title.get(position));
             holder.food_destails_sub_title_textview.setText(sub_title.get(position));
             holder.food_deatils_imgaeview_iv.setImageResource(images.get(position));
-            pos=holder.getPosition();
+
+
+            holder.card_view_food_deatils.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    pos=holder.getPosition();
+                    pos++;
+                    Toast.makeText(context, "Pressed: "+pos, Toast.LENGTH_SHORT).show();
+
+                    if (pos==1)
+                    {
+                        Intent i = new Intent(context,SingleFoodDeatilsActivity.class);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+
+                }
+            });
         }
 
     }
@@ -178,15 +216,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 food_deatils_imgaeview.setVisibility(View.VISIBLE);
                 food_deatils_imgaeview_iv.setVisibility(View.GONE);
 
-                card_view_food_deatils.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        pos=getPosition();
-                        pos++;
-                        Toast.makeText(context, "Pressed: "+pos, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
             }
 
             if (card_val==50)
@@ -196,15 +225,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 food_destails_title_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
                 food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
                 food_deatils_imgaeview_iv.setVisibility(View.VISIBLE);
-
-                card_view_food_deatils.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        pos=getPosition();
-                        pos++;
-                        Toast.makeText(context, "Pressed: "+pos, Toast.LENGTH_SHORT).show();
-                    }
-                });
 
             }
 
