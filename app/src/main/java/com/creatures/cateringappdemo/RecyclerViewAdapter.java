@@ -199,12 +199,53 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                     pos=holder.getPosition();
                     pos++;
-                    Toast.makeText(context, "Pressed: "+pos, Toast.LENGTH_SHORT).show();
+
 
                     if (pos==1)
                     {
                         Intent i = new Intent(context,SingleFoodDeatilsActivity.class);
+                        i.putExtra("thali_deatils",11);
                         holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==2)
+                    {
+                        Intent i = new Intent(context,SingleFoodDeatilsActivity.class);
+                        i.putExtra("thali_deatils",12);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==3)
+                    {
+                        Intent i = new Intent(context,SingleFoodDeatilsActivity.class);
+                        i.putExtra("thali_deatils",13);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==4)
+                    {
+                        Intent i = new Intent(context,SingleFoodDeatilsActivity.class);
+                        i.putExtra("thali_deatils",14);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==5)
+                    {
+                        Intent i = new Intent(context,SingleFoodDeatilsActivity.class);
+                        i.putExtra("thali_deatils",15);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==6)
+                    {
+                        Intent i = new Intent(context,SingleFoodDeatilsActivity.class);
+                        i.putExtra("thali_deatils",16);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==7)
+                    {
+                        Intent i = new Intent(context,SingleFoodDeatilsActivity.class);
+                        i.putExtra("thali_deatils",17);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else
+                    {
+                        Toast.makeText(context, "Wrong Item Pressed: ", Toast.LENGTH_SHORT).show();
                     }
 
                 }

@@ -42,6 +42,13 @@
                     app:selected_dot="@color/purple_500"
                     app:unselected_dot="@color/purple_200" />
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryDark"
+                    android:id="@+id/image_view_single_food_details"/>
+
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
