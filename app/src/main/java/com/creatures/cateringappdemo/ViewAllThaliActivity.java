@@ -64,7 +64,7 @@ public class ViewAllThaliActivity extends AppCompatActivity {
         //viewallthali_img.add(R.drawable.chinese);
 
 
-        recyclerViewAdapter=new RecyclerViewAdapter(viewallthali_title,viewallthali_sub_title,viewallthali_img,this,40);
+        recyclerViewAdapter=new RecyclerViewAdapter(viewallthali_title,viewallthali_sub_title,viewallthali_img,this,50);
         recyclerView_viewallthali.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView_viewallthali.setAdapter(recyclerViewAdapter);
 

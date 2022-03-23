@@ -76,6 +76,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         {
             view_oncreate = layoutInflater.inflate(R.layout.food_deatils,parent,false);
         }
+        else if (card_val==50)
+        {
+            view_oncreate = layoutInflater.inflate(R.layout.food_deatils,parent,false);
+        }
 
         else {
             view_oncreate = layoutInflater.inflate(R.layout.food_by_categories,parent,false);
@@ -110,6 +114,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.food_destails_sub_title_textview.setText(sub_title.get(position));
             holder.food_deatils_imgaeview.setImageList(slide_image_models.get(position));
         }
+        if (card_val==50)
+        {
+            holder.food_destails_title_textview.setText(title.get(position));
+            holder.food_destails_sub_title_textview.setText(sub_title.get(position));
+            holder.food_deatils_imgaeview_iv.setImageResource(images.get(position));
+        }
 
 
 
@@ -129,6 +139,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView event_text;
 
         ImageSlider food_deatils_imgaeview;
+        ImageView food_deatils_imgaeview_iv;
         TextView food_destails_title_textview,food_destails_sub_title_textview;
 
 
@@ -154,9 +165,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             if (card_val==40)
             {
-                food_deatils_imgaeview=(ImageSlider) itemView.findViewById(R.id.food_details_imageview);
+                food_deatils_imgaeview_iv=(ImageView) itemView.findViewById(R.id.food_details_imageview);
+                food_deatils_imgaeview=(ImageSlider) itemView.findViewById(R.id.food_details_image_slider);
                 food_destails_title_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
                 food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
+
+                food_deatils_imgaeview.setVisibility(View.VISIBLE);
+                food_deatils_imgaeview_iv.setVisibility(View.GONE);
+
+            }
+
+            if (card_val==50)
+            {
+
+                food_deatils_imgaeview_iv=(ImageView) itemView.findViewById(R.id.food_details_imageview);
+                food_destails_title_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
+                food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
+
+                food_deatils_imgaeview_iv.setVisibility(View.VISIBLE);
 
             }
 

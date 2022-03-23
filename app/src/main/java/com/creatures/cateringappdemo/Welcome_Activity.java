@@ -64,6 +64,7 @@ public class Welcome_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
+                finish();
             }
         });
 
