@@ -12,11 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
+        app:titleTextColor="@color/purple_700"
         app:titleTextAppearance="@style/ToolbarTitleStyle"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_5sdp"
         android:layout_height="match_parent"
         android:id="@+id/event_recycler_view"/>
 

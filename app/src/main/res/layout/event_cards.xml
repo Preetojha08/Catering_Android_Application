@@ -6,71 +6,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardPreventCornerOverlap="false"
     app:cardCornerRadius="@dimen/_10sdp"
-    app:cardBackgroundColor="@color/colorLightRed"
+    app:cardBackgroundColor="@color/colorPrimary"
     android:layout_marginVertical="@dimen/_5sdp"
     android:layout_marginHorizontal="@dimen/_5sdp">
 
-   <androidx.constraintlayout.widget.ConstraintLayout
+   <FrameLayout
        android:layout_width="match_parent"
+       android:backgroundTint="#2D90E0EF"
        android:layout_height="match_parent">
 
        <ImageView
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:scaleType="fitXY"
-           android:id="@+id/event_image_view"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent" />
-
+           android:backgroundTint="#2D90E0EF"
+           android:id="@+id/event_image_view" />
 
        <LinearLayout
            android:id="@+id/linearLayout"
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:background="@color/white"
+           android:layout_height="match_parent"
            android:orientation="horizontal"
-           android:backgroundTint="@color/colorPrimary"
-           android:padding="@dimen/_15sdp"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.0"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintVertical_bias="1.0">
+           android:backgroundTint="#000"
+           android:padding="@dimen/_15sdp"/>
 
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center"
-               android:fontFamily="@font/abril_fatface"
-               android:text="Hello Word"
-               android:id="@+id/event_title_text_view"
-               android:textColor="@color/black"
-               android:textSize="@dimen/_12sdp" />
-
-       </LinearLayout>
-
-       <RatingBar
+       <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:isIndicator="true"
-           android:progressTint="@color/colorRed"
-           android:numStars="5"
-           android:rating="3"
-           android:scaleX=".5"
-           android:scaleY=".5"
-           android:transformPivotX="@dimen/_170sdp"
-           android:transformPivotY="@dimen/_25sdp"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="1.0"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintVertical_bias="1.0" />
+           android:layout_gravity="bottom"
+           android:fontFamily="@font/abril_fatface"
+           android:text="Hello Word"
+           android:layout_margin="@dimen/_15sdp"
+           android:id="@+id/event_title_text_view"
+           android:textColor="@color/white"
+           android:textColorHighlight="@color/purple_700"
+           android:textSize="@dimen/_18sdp" />
 
-   </androidx.constraintlayout.widget.ConstraintLayout>
+   </FrameLayout>
+
+
 
 
 </com.google.android.material.card.MaterialCardView>

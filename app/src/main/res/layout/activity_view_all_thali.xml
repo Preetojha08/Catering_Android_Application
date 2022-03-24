@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
+        app:titleTextColor="@color/purple_700"
         app:titleTextAppearance="@style/ToolbarTitleStyle"/>
 
     <androidx.recyclerview.widget.RecyclerView
