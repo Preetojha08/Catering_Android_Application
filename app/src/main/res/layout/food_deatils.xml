@@ -62,7 +62,7 @@
                         android:layout_marginHorizontal="@dimen/_8sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
-                        android:textColor="@color/purple_500"
+                        android:textColor="@color/white"
                         android:fontFamily="@font/akaya_telivigala"
                         android:paddingRight="@dimen/_4sdp"
                         android:text="Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world "

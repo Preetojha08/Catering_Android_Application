@@ -8,6 +8,12 @@
     android:padding="@dimen/_5sdp"
     tools:context=".Welcome_Activity">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        android:alpha="0.2"/>
+
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +27,8 @@
         android:layout_height="@dimen/_100sdp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_15sdp"
-        android:src="@drawable/hello_world" />
+        android:src="@drawable/hello_world"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/welcome_layout"
@@ -74,7 +81,7 @@
             android:gravity="center"
             android:text="login"
             android:textAllCaps="true"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/purple_700"
             android:textSize="@dimen/_32sdp" />
 
         <LinearLayout
@@ -149,7 +156,7 @@
             android:layout_marginTop="15dp"
             android:fontFamily="@font/abril_fatface"
             android:text="Forgot Password "
-            android:textColor="#0077b6"
+            android:textColor="@color/purple_700"
             android:textSize="15sp" />
 
         <TextView
@@ -213,7 +220,7 @@
                 android:fontFamily="@font/abril_fatface"
                 android:text="Not a Member Yet? "
                 android:textAllCaps="false"
-                android:textColor="@color/purple_200"
+                android:textColor="@color/purple_500"
                 android:textSize="15sp" />
 
             <TextView
@@ -222,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abril_fatface"
                 android:text="  Sign Up"
-                android:textColor="#0077b6"
+                android:textColor="@color/purple_700"
                 android:textSize="15sp" />
 
         </LinearLayout>
@@ -235,7 +242,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/welcome_logo_image_view"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:layout_marginHorizontal="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:gravity="center"
@@ -251,7 +258,7 @@
             android:gravity="center"
             android:text="Registration"
             android:textAllCaps="true"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/purple_700"
             android:textSize="@dimen/_32sdp" />
 
         <LinearLayout
@@ -356,9 +363,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:textColor="@color/white"
             android:fontFamily="@font/abril_fatface"
-            android:text="Sign UP" />
+            android:text="Sign UP"
+            android:textColor="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -375,7 +382,7 @@
                 android:fontFamily="@font/abril_fatface"
                 android:text="Already Have Account"
                 android:textAllCaps="false"
-                android:textColor="@color/purple_200"
+                android:textColor="@color/purple_500"
                 android:textSize="15sp" />
 
             <TextView
@@ -384,7 +391,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abril_fatface"
                 android:text="  Sign In"
-                android:textColor="#0077b6"
+                android:textColor="@color/purple_700"
                 android:textSize="15sp" />
 
         </LinearLayout>
@@ -392,10 +399,11 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/welcome_skip_image_view"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="@dimen/_30sdp"
-        android:id="@+id/welcome_skip_image_view"
         android:layout_alignParentRight="true"
+        android:tint="@color/purple_700"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="@dimen/_5sdp"
         android:layout_marginVertical="@dimen/_5sdp"

@@ -17,6 +17,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.recycler_view_holder> {
 
@@ -85,6 +86,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             view_oncreate = layoutInflater.inflate(R.layout.food_deatils,parent,false);
         }
 
+        else if (card_val==60)
+        {
+            view_oncreate = layoutInflater.inflate(R.layout.inquiry_card,parent,false);
+        }
+
         else {
             view_oncreate = layoutInflater.inflate(R.layout.food_by_categories,parent,false);
         }
@@ -113,6 +119,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         {
             holder.event_text.setText(title.get(position));
             holder.event_img.setImageResource(images.get(position));
+        }
+        if (card_val==60)
+        {
+            holder.textview_inquiry_title.setText(title.get(position));
+            holder.circleImageView_inquiry_images.setImageResource(images.get(position));
         }
 
         if (card_val==40)
@@ -273,6 +284,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         CardView card_view_food_deatils;
 
+        CircleImageView circleImageView_inquiry_images;
+        TextView textview_inquiry_title;
+
 
         public recycler_view_holder(@NonNull View itemView) {
             super(itemView);
@@ -304,6 +318,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 food_deatils_imgaeview.setVisibility(View.VISIBLE);
                 food_deatils_imgaeview_iv.setVisibility(View.GONE);
 
+            }
+            if (card_val==60)
+            {
+                circleImageView_inquiry_images=(CircleImageView) itemView.findViewById(R.id.circle_imageview_inquiry_card);
+                textview_inquiry_title=(TextView) itemView.findViewById(R.id.textview_inquiry_card);
             }
 
             if (card_val==50)

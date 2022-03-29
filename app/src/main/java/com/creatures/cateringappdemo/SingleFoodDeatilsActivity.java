@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -29,9 +31,9 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_single_food_deatils);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("   Order By Categories");
 
-        int foodcatitem_number = getIntent().getExtras().getInt("food_cat_item");
+        int foodcatitem_number=0;
+        foodcatitem_number = getIntent().getExtras().getInt("food_cat_item");
 
         textview_heading=(TextView)findViewById(R.id.textview_heading_singlefooddeatils);
         textview_counters=(TextView)findViewById(R.id.textview_counters_singlefooddeatils);
@@ -156,24 +158,13 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
 
         else
         {
-            singlefooddetails_imageview.setVisibility(View.GONE);
-            singlefooddetails_imageSlider.setVisibility(View.VISIBLE);
-            textview_heading.setText("Text Fail");
-            textview_items.setText("Test Fail");
-            textview_counters.setText("3 - 4 Counters Required");
-            textview_money.setText("Approx 20₹ Per Item");
-
-            slide_image_models.add(new SlideModel(R.drawable.ff_4));
-            slide_image_models.add(new SlideModel(R.drawable.ff_2));
-            slide_image_models.add(new SlideModel(R.drawable.ff_3));
-
-            singlefooddetails_imageSlider.setImageList(slide_image_models);
+            Log.e("Error","Error");
         }
 
 
         //Thalis
-
-        int thalidetails_number = getIntent().getExtras().getInt("thali_deatils");
+        int thalidetails_number = 0;
+        thalidetails_number = getIntent().getExtras().getInt("thali_deatils");
 
         if (thalidetails_number==11){
 
@@ -270,20 +261,7 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
 
         else
         {
-            textview_heading.setText("Text Fail");
-            textview_items.setText("Test Fail");
-            textview_counters.setText("3 - 4 Counters Required");
-            textview_money.setText("Approx 20₹ Per Item");
-
-
-            singlefooddetails_imageSlider.setVisibility(View.VISIBLE);
-            singlefooddetails_imageview.setVisibility(View.GONE);
-
-            slide_image_models.add(new SlideModel(R.drawable.ff_4));
-            slide_image_models.add(new SlideModel(R.drawable.ff_2));
-            slide_image_models.add(new SlideModel(R.drawable.ff_3));
-
-            singlefooddetails_imageSlider.setImageList(slide_image_models);
+            Log.e("Error","Error");
         }
 
 

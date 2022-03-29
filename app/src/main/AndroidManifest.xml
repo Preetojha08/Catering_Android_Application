@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CateringAppDemo">
         <activity
-            android:name=".SingleFoodDeatilsActivity"
+            android:name=".AddInquiryActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
+        <activity
+            android:name=".ContactUsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="false" />
+        <activity
+            android:name=".SingleFoodDeatilsActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ProfileActivity"
             android:exported="false"

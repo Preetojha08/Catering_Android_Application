@@ -7,27 +7,31 @@
         <entry key="app/src/main/res/drawable/button_bg.xml" value="0.142" />
         <entry key="app/src/main/res/drawable/ic_cart.xml" value="0.142" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.142" />
+        <entry key="app/src/main/res/layout/activity_add_inquiry.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_event.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2947916666666667" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_single_food_deatils.xml" value="0.2947916666666667" />
-        <entry key="app/src/main/res/layout/activity_view_all_categories.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/activity_view_all_categories.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_view_all_thali.xml" value="0.28072916666666664" />
-        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/add_inquiry_menu_card.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/book_by_thali.xml" value="0.25" />
         <entry key="app/src/main/res/layout/event_cards.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/food_by_categories.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/food_deatils.xml" value="0.1" />
         <entry key="app/src/main/res/layout/food_details.xml" value="0.22552083333333334" />
         <entry key="app/src/main/res/layout/home_content.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/inquiry_card.xml" value="0.12" />
         <entry key="app/src/main/res/layout/thali_deatils.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/menu/nav_home_menu_drawer.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/menu/top_menu.xml" value="0.2947916666666667" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
