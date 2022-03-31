@@ -309,7 +309,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             if (card_val==40)
             {
-
                 card_view_food_deatils=(CardView)itemView.findViewById(R.id.card_view_food_details);
                 food_deatils_imgaeview_iv=(ImageView) itemView.findViewById(R.id.food_details_imageview);
                 food_deatils_imgaeview=(ImageSlider) itemView.findViewById(R.id.food_details_image_slider);
@@ -317,7 +316,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
                 food_deatils_imgaeview.setVisibility(View.VISIBLE);
                 food_deatils_imgaeview_iv.setVisibility(View.GONE);
-
             }
             if (card_val==60)
             {
@@ -332,13 +330,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 food_destails_title_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
                 food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
                 food_deatils_imgaeview_iv.setVisibility(View.VISIBLE);
-
             }
 
         }
-
-
-
     }
 
 

@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,12 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
     ImageSlider singlefooddetails_imageSlider;
     TextView textview_heading,textview_items,textview_counters,textview_money;
     ImageView singlefooddetails_imageview;
+    Button add_inquiry_btn;
+
+    int foodcatitem_number;
+    int thalidetails_number;
+
+    InquiryDataPass inquiryDataPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +39,9 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_single_food_deatils);
         setSupportActionBar(toolbar);
 
-        int foodcatitem_number=0;
+        add_inquiry_btn=(Button) findViewById(R.id.add_inquiry_button_sfd);
+
+
         foodcatitem_number = getIntent().getExtras().getInt("food_cat_item");
 
         textview_heading=(TextView)findViewById(R.id.textview_heading_singlefooddeatils);
@@ -163,7 +172,7 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
 
 
         //Thalis
-        int thalidetails_number = 0;
+
         thalidetails_number = getIntent().getExtras().getInt("thali_deatils");
 
         if (thalidetails_number==11){
@@ -263,6 +272,113 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
         {
             Log.e("Error","Error");
         }
+
+        add_inquiry_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //inquiryDataPass.thali_category = thalidetails_number;
+                //inquiryDataPass.food_category = foodcatitem_number;
+                Toast.makeText(SingleFoodDeatilsActivity.this, "Item is Added in Your Inquiry", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SingleFoodDeatilsActivity.this, " Thali: "+thalidetails_number+" Categories:"+foodcatitem_number, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SingleFoodDeatilsActivity.this, ""+a, Toast.LENGTH_SHORT).show();
+                //ab kya kar na just if me woh number check kar re ga toh woh number chage kar dega 1 se agar 1 hogaya mat woh item add hogaya
+
+
+                if(foodcatitem_number==1)
+                {
+                    inquiryDataPass.food_category_ff=1;
+                }
+                else if(foodcatitem_number==2)
+                {
+                    inquiryDataPass.food_category_is=2;
+                }
+                else if(foodcatitem_number==3)
+                {
+                    inquiryDataPass.food_category_cf=3;
+                }
+                else if(foodcatitem_number==4)
+                {
+                    inquiryDataPass.food_category_wd=4;
+                }
+                else if(foodcatitem_number==5)
+                {
+                    inquiryDataPass.food_category_nvs=5;
+                }
+                else if(foodcatitem_number==6)
+                {
+                    inquiryDataPass.food_category_bs=6;
+                }
+                else if(foodcatitem_number==7)
+                {
+                    inquiryDataPass.food_category_sd=7;
+                }
+                else
+                {
+                    /*inquiryDataPass.food_category_sd=0;
+                    inquiryDataPass.food_category_bs=0;
+                    inquiryDataPass.food_category_nvs=0;
+                    inquiryDataPass.food_category_wd=0;
+                    inquiryDataPass.food_category_cf=0;
+                    inquiryDataPass.food_category_is=0;
+                    inquiryDataPass.food_category_ff=0;*/
+
+                    Log.e("Error","Error");
+                }
+
+                /*public static int thali_category_BT = 0;
+                public static int thali_category_IT = 0;
+                public static int thali_category_NT = 0;
+                public static int thali_category_MT = 0;
+
+                public static int thali_category_PARTT = 0;
+                public static int thali_category_SIT = 0;
+                public static int thali_category_PT = 0;*/
+
+                if (thalidetails_number==11)
+                {
+                    inquiryDataPass.thali_category_BT=11;
+                }
+                else if (thalidetails_number==12)
+                {
+                    inquiryDataPass.thali_category_IT=12;
+                }
+                else if (thalidetails_number==13)
+                {
+                    inquiryDataPass.thali_category_NT=13;
+                }
+                else if (thalidetails_number==14)
+                {
+                    inquiryDataPass.thali_category_MT=14;
+                }
+                else if (thalidetails_number==15)
+                {
+                    inquiryDataPass.thali_category_PARTT=15;
+                }
+                else if (thalidetails_number==16)
+                {
+                    inquiryDataPass.thali_category_SIT=16;
+                }
+                else if (thalidetails_number==17)
+                {
+                    inquiryDataPass.thali_category_PT=17;
+                }
+                else
+                {
+                    /*inquiryDataPass.thali_category_BT=0;
+                    inquiryDataPass.thali_category_IT=0;
+                    inquiryDataPass.thali_category_NT=0;
+                    inquiryDataPass.thali_category_MT=0;
+                    inquiryDataPass.thali_category_PARTT=0;
+                    inquiryDataPass.thali_category_SIT=0;
+                    inquiryDataPass.thali_category_PT=0;*/
+                    Log.e("Error","Error");
+                }
+
+
+
+            }
+        });
 
 
 

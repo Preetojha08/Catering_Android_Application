@@ -132,6 +132,7 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="@dimen/_3sdp"
+        android:id="@+id/add_inquiry_button_sfd"
         android:backgroundTint="@color/colorPrimaryDark"
         android:fontFamily="@font/adamina"
         android:text="Add Inquiry"

@@ -40,7 +40,7 @@
                     android:id="@+id/imageView3"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_80sdp"
-                    android:src="@drawable/user"
+                    android:src="@drawable/iron_man"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.1"
@@ -141,6 +141,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/_20sdp"
+                    android:adjustViewBounds="true"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -148,7 +149,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:drawableLeft="@drawable/newusercopy"
+                        android:adjustViewBounds="true"
+                        android:drawableLeft="@drawable/user_img"
                         android:drawablePadding="@dimen/_10sdp"
                         android:text="Preet Ojha"
                         android:inputType="text" />

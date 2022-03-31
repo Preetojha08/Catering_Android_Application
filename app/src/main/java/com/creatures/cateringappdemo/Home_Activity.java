@@ -3,6 +3,7 @@ package com.creatures.cateringappdemo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -47,6 +48,8 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
     DrawerLayout drawer;
     LinearLayoutManager HorizontalLayout;
 
+    AppCompatButton contact_us_btn;
+
     TextView tool_bar_tv;
 
     @Override
@@ -58,11 +61,19 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Catering App");
 
+        contact_us_btn=(AppCompatButton)findViewById(R.id.direct_contact_us_button);
 
         rv_food_by_cat=(RecyclerView)findViewById(R.id.recyclerView_food_by_cat);
         rv_book_by_thali=(RecyclerView)findViewById(R.id.recyclerView_book_by_thali);
         tv_viewall_cat=(TextView)findViewById(R.id.tv_view_all_category);
         tv_viewall_thali=(TextView)findViewById(R.id.tv_view_all_thali);
+
+        contact_us_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home_Activity.this,ContactUsActivity.class));
+            }
+        });
 
         tv_viewall_thali.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,6 +195,10 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
             case (R.id.nav_contact_us):
                 Toast.makeText(this, "Wide your Network", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Home_Activity.this,ContactUsActivity.class));
+                break;
+
+            case (R.id.nav_add_inquiry):
                 startActivity(new Intent(Home_Activity.this,AddInquiryActivity.class));
                 break;
 
