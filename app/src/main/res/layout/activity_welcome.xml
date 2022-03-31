@@ -8,18 +8,17 @@
     tools:context=".Welcome_Activity">
 
     <View
+        android:id="@+id/view_background_for_processbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/purple_200"
         android:alpha="0.5"
-        android:id="@+id/view_background_for_processbar"
-        />
+        android:background="@color/purple_200" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg"
-        android:alpha="0.2"/>
+        android:alpha="0.2"
+        android:background="@drawable/bg" />
 
     <ProgressBar
         android:layout_width="wrap_content"

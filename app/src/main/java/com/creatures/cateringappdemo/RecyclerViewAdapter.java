@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
@@ -119,6 +120,52 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         {
             holder.event_text.setText(title.get(position));
             holder.event_img.setImageResource(images.get(position));
+
+            holder.event_display_cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pos=holder.getPosition();
+                    pos++;
+
+                    if (pos==1)
+                    {
+                        Intent i = new Intent(context,EventDeatilsActivity.class);
+                        i.putExtra("event_item",31);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==2)
+                    {
+                        Intent i = new Intent(context,EventDeatilsActivity.class);
+                        i.putExtra("event_item",32);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==3)
+                    {
+                        Intent i = new Intent(context,EventDeatilsActivity.class);
+                        i.putExtra("event_item",33);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==4)
+                    {
+                        Intent i = new Intent(context,EventDeatilsActivity.class);
+                        i.putExtra("event_item",34);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==5)
+                    {
+                        Intent i = new Intent(context,EventDeatilsActivity.class);
+                        i.putExtra("event_item",35);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+                    else if (pos==6)
+                    {
+                        Intent i = new Intent(context,EventDeatilsActivity.class);
+                        i.putExtra("event_item",36);
+                        holder.itemView.getContext().startActivity(i);
+                    }
+
+                }
+            });
         }
         if (card_val==60)
         {
@@ -287,6 +334,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         CircleImageView circleImageView_inquiry_images;
         TextView textview_inquiry_title;
 
+        MaterialCardView event_display_cardView;
+
 
         public recycler_view_holder(@NonNull View itemView) {
             super(itemView);
@@ -305,6 +354,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             {
                 event_img=(ImageView)itemView.findViewById(R.id.event_image_view);
                 event_text=(TextView)itemView.findViewById(R.id.event_title_text_view);
+                event_display_cardView=(MaterialCardView) itemView.findViewById(R.id.event_card_display);
             }
 
             if (card_val==40)

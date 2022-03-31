@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CateringAppDemo">
         <activity
+            android:name=".EventDeatilsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".AddInquiryActivity"
