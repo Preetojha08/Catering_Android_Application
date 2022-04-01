@@ -30,17 +30,24 @@ public class ProfileActivity extends AppCompatActivity {
         pro_title_textview=(TextView)findViewById(R.id.text_view_username_profile_title);
 
         String name,mail,number,password;
+        int a;
 
         name=InquiryDataPass.u_name;
         mail=InquiryDataPass.u_email;
         number=InquiryDataPass.u_mobile_no;
         password=InquiryDataPass.u_password;
+        a=InquiryDataPass.profile_activitor;
 
-        pro_title_textview.setText(name);
-        tiet_pro_uname.setText(name);
-        tiet_pro_email.setText(mail);
-        tiet_pro_number.setText(number);
-        tiet_pro_password.setText(password);
+        if (a==100)
+        {
+            pro_title_textview.setText(name);
+            tiet_pro_uname.setText(name);
+            tiet_pro_email.setText(mail);
+            tiet_pro_number.setText(number);
+            tiet_pro_password.setText(password);
+        }
+
+
 
     }
 }

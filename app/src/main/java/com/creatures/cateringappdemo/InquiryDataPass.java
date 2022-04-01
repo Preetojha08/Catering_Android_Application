@@ -12,6 +12,8 @@ public class InquiryDataPass {
     public static int food_category_bs = 0;
     public static int food_category_sd = 0;
 
+    public static int profile_activitor = 0;
+
     //Thalis
     public static int thali_category_BT = 0;
     public static int thali_category_IT = 0;

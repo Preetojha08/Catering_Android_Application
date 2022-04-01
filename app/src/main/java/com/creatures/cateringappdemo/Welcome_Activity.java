@@ -216,7 +216,7 @@ public class Welcome_Activity extends AppCompatActivity {
                 {
                     tiet_con_password.setError("Invalid Passw0rd");
                 }
-                else if(password != con_password)
+                else if(!con_password.equals(password))
                 {
                     tiet_con_password.setError("Invalid Passw0rd");
                 }
@@ -264,6 +264,7 @@ public class Welcome_Activity extends AppCompatActivity {
 
                                         registration_layout.startAnimation(animation_first);
                                         login_layout.startAnimation(animation_second);
+                                        InquiryDataPass.profile_activitor=100;
                                         InquiryDataPass.u_name=username;
                                         InquiryDataPass.u_email=email;
                                         InquiryDataPass.u_mobile_no=mobile_no;
