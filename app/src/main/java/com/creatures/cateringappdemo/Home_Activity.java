@@ -231,6 +231,11 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 logout_counter=0;
 
                 home_sp_editor.remove("welcomeCounterKey");
+                home_sp_editor.remove("nameKey");
+                home_sp_editor.remove("emailKey");
+                home_sp_editor.remove("phoneKey");
+                home_sp_editor.remove("passwordKey");
+
                 home_sp_editor.putInt("welcomeCounterKey",logout_counter);
                 home_sp_editor.commit();
                 home_sp_editor.apply();
