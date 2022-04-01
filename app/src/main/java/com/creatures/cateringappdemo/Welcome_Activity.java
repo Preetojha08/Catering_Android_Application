@@ -2,7 +2,9 @@ package com.creatures.cateringappdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,6 +48,13 @@ public class Welcome_Activity extends AppCompatActivity {
     public static final Pattern password_Pattern = Pattern.compile("(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{6,15}");
 
     ProgressBar progress_bar_reg;
+
+    public static final String MyPREFERENCES = "MyPREFERENCES" ;
+
+    int welcome_counter;
+
+    SharedPreferences shared_preferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +165,8 @@ public class Welcome_Activity extends AppCompatActivity {
 
         //Registration Process
 
+        shared_preferences=getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
         tiet_username=(TextInputEditText)findViewById(R.id.text_input_edit_text_reg_user_name);
         tiet_mobile_no=(TextInputEditText)findViewById(R.id.text_input_edit_text_reg_user_mobile);
         tiet_email=(TextInputEditText)findViewById(R.id.text_input_edit_text_reg_user_email);
@@ -176,6 +187,7 @@ public class Welcome_Activity extends AppCompatActivity {
                 mobile_no=tiet_mobile_no.getText().toString().trim();
                 password=tiet_password.getText().toString().trim();
                 con_password=tiet_con_password.getText().toString().trim();
+
 
 
                 if (username.isEmpty() || username.equals(" ") || mobile_no.isEmpty() || mobile_no.equals(" ") || password.isEmpty() || password.equals(" ") || con_password.isEmpty() || con_password.equals(" "))
@@ -270,9 +282,23 @@ public class Welcome_Activity extends AppCompatActivity {
                                         InquiryDataPass.u_mobile_no=mobile_no;
                                         InquiryDataPass.u_password=password;
 
+                                        welcome_counter=100;
+
+                                        SharedPreferences.Editor sp_editor = shared_preferences.edit();
+
+                                        sp_editor.putInt("welcomeCounterKey",welcome_counter);
+
+                                        sp_editor.putString("nameKey",username);
+                                        sp_editor.putString("emailKey",email);
+                                        sp_editor.putString("phoneKey",mobile_no);
+                                        sp_editor.putString("passwordKey",password);
+                                        sp_editor.commit();
+                                        sp_editor.apply();
+
                                     }
                                     else
                                     {
+                                        welcome_counter=0;
                                         Toast.makeText(Welcome_Activity.this, ""+result, Toast.LENGTH_SHORT).show();
                                     }
                                     //End ProgressBar (Set visibility to GONE)

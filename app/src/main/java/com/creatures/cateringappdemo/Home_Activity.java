@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
@@ -51,18 +53,28 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
     AppCompatButton contact_us_btn;
 
-    TextView tool_bar_tv;
+    SharedPreferences home_shared_preferences;
+    SharedPreferences.Editor home_sp_editor;
+    public static final String MyPREFERENCES = "MyPREFERENCES" ;
+    int logout_counter=0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+        SharedPreferences home_shared_preferences=getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        home_sp_editor = home_shared_preferences.edit();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_home_portal);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Catering App");
 
         contact_us_btn=(AppCompatButton)findViewById(R.id.direct_contact_us_button);
+
 
         rv_food_by_cat=(RecyclerView)findViewById(R.id.recyclerView_food_by_cat);
         rv_book_by_thali=(RecyclerView)findViewById(R.id.recyclerView_book_by_thali);
@@ -216,7 +228,16 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 break;
 
             case (R.id.nav_logout):
+                logout_counter=0;
+
+                home_sp_editor.remove("welcomeCounterKey");
+                home_sp_editor.putInt("welcomeCounterKey",logout_counter);
+                home_sp_editor.commit();
+                home_sp_editor.apply();
+
                 Toast.makeText(this, "Bye, \uD83D\uDC4B\uD83C ", Toast.LENGTH_SHORT).show();
+                finish();
+
                 break;
 
             case (R.id.nav_Events):
