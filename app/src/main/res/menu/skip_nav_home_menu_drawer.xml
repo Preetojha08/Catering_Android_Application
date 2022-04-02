@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single" >
+        <item android:title="E - Commerce Application">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/home"
+                    android:title="Home" />
+
+                <item
+                    android:id="@+id/nav_menu"
+                    android:icon="@drawable/menu"
+                    android:title="Menu" />
+
+                <item
+                    android:id="@+id/nav_Events"
+                    android:icon="@drawable/event"
+                    android:title="Events" />
+
+            </menu>
+
+        </item>
+
+        <item android:title="About US">
+            <menu>
+
+                <item
+                    android:id="@+id/nav_vision"
+                    android:icon="@drawable/vision"
+                    android:title="Vision" />
+
+                <item
+                    android:id="@+id/nav_add_inquiry"
+                    android:icon="@drawable/feedback"
+                    android:title="Add Inquiry" />
+
+                <item
+                    android:id="@+id/nav_contact_us"
+                    android:icon="@drawable/info"
+                    android:title="Contact US" />
+
+            </menu>
+        </item>
+
+        <item android:title="Profile">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_registration"
+                    android:icon="@drawable/registration"
+                    android:title="Registartion" />
+
+                <item
+                    android:id="@+id/nav_login"
+                    android:icon="@drawable/login"
+                    android:title="Login" />
+
+            </menu>
+
+        </item>
+
+
+    </group>
+
+
+</menu>
