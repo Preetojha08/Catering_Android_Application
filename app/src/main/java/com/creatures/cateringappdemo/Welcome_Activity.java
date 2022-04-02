@@ -52,6 +52,7 @@ public class Welcome_Activity extends AppCompatActivity {
     public static final String MyPREFERENCES = "MyPREFERENCES" ;
 
     int welcome_counter;
+    int skip_counter;
 
     SharedPreferences shared_preferences;
 
@@ -86,6 +87,12 @@ public class Welcome_Activity extends AppCompatActivity {
         welcome_skip_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences.Editor sp_editor = shared_preferences.edit();
+
+                skip_counter=500;
+                sp_editor.putInt("SkipMenuCounterKey",skip_counter);
+                sp_editor.commit();
+                sp_editor.apply();
                 startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
                 finish();
             }
@@ -187,8 +194,6 @@ public class Welcome_Activity extends AppCompatActivity {
                 mobile_no=tiet_mobile_no.getText().toString().trim();
                 password=tiet_password.getText().toString().trim();
                 con_password=tiet_con_password.getText().toString().trim();
-
-
 
                 if (username.isEmpty() || username.equals(" ") || mobile_no.isEmpty() || mobile_no.equals(" ") || password.isEmpty() || password.equals(" ") || con_password.isEmpty() || con_password.equals(" "))
                 {

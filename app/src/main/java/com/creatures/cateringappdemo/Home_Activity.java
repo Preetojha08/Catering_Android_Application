@@ -66,7 +66,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_home);
 
 
-        SharedPreferences home_shared_preferences=getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        home_shared_preferences=getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         home_sp_editor = home_shared_preferences.edit();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_home_portal);
@@ -171,8 +171,23 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        int skip_c;
+        skip_c=home_shared_preferences.getInt("SkipMenuCounterKey",-1);
+
+        if (skip_c==500)
+        {
+            navigationView.inflateMenu(R.menu.skip_nav_home_menu_drawer);
+        }
+        else
+        {
+            navigationView.inflateMenu(R.menu.nav_home_menu_drawer);
+        }
+
+
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
+
 
     }
 
@@ -235,6 +250,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 home_sp_editor.remove("emailKey");
                 home_sp_editor.remove("phoneKey");
                 home_sp_editor.remove("passwordKey");
+                home_sp_editor.remove("SkipMenuCounterKey");
 
                 home_sp_editor.putInt("welcomeCounterKey",logout_counter);
                 home_sp_editor.commit();
