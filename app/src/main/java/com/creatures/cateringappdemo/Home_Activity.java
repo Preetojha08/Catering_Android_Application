@@ -226,6 +226,10 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        home_shared_preferences=getSharedPreferences("MyPREFERENCES",Context.MODE_MULTI_PROCESS);
+        int login_c=home_shared_preferences.getInt("LoginCounterKey",0);
+
         switch (item.getItemId())
         {
             case (R.id.nav_profile):
@@ -239,7 +243,12 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 break;
 
             case (R.id.nav_add_inquiry):
-                startActivity(new Intent(Home_Activity.this,AddInquiryActivity.class));
+                if (login_c==1000)
+                {
+                    startActivity(new Intent(Home_Activity.this,AddInquiryActivity.class));
+                    break;
+                }
+                Toast.makeText(this, "To use this Feature you need to LOGIN first", Toast.LENGTH_SHORT).show();
                 break;
 
             case (R.id.nav_logout):
@@ -263,7 +272,6 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
             case (R.id.nav_Events):
                 startActivity(new Intent(Home_Activity.this,EventActivity.class));
-
                 break;
 
             case (R.id.nav_home):

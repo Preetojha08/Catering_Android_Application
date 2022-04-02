@@ -2,6 +2,7 @@ package com.creatures.cateringappdemo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     List<Integer> images;
     LayoutInflater layoutInflater;
     int pos=0;
+
+    SharedPreferences recylerviewadpter_shared_preferences;
+    SharedPreferences.Editor rva_sp_editor;
 
 
 
@@ -126,6 +130,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 public void onClick(View v) {
                     pos=holder.getPosition();
                     pos++;
+
 
                     if (pos==1)
                     {

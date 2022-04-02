@@ -53,6 +53,7 @@ public class Welcome_Activity extends AppCompatActivity {
 
     int welcome_counter;
     int skip_counter;
+    int login_counter;
 
     SharedPreferences shared_preferences;
 
@@ -70,6 +71,8 @@ public class Welcome_Activity extends AppCompatActivity {
         progress_bar_reg=(ProgressBar)findViewById(R.id.progress_bar_reg);
 
         view_bg_color=(View)findViewById(R.id.view_background_for_processbar);
+
+        shared_preferences=getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         login_layout.setVisibility(View.GONE);
         registration_layout.setVisibility(View.GONE);
@@ -171,8 +174,6 @@ public class Welcome_Activity extends AppCompatActivity {
 
 
         //Registration Process
-
-        shared_preferences=getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         tiet_username=(TextInputEditText)findViewById(R.id.text_input_edit_text_reg_user_name);
         tiet_mobile_no=(TextInputEditText)findViewById(R.id.text_input_edit_text_reg_user_mobile);
@@ -387,6 +388,11 @@ public class Welcome_Activity extends AppCompatActivity {
                                     if (result.equals("Login Success"))
                                     {
                                         Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
+                                        SharedPreferences.Editor sp_editor = shared_preferences.edit();
+                                        login_counter=1000;
+                                        sp_editor.putInt("LoginCounterKey",login_counter);
+                                        sp_editor.commit();
+                                        sp_editor.apply();
                                         startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
                                         finish();
                                     }

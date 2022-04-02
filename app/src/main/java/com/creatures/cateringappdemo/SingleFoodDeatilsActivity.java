@@ -3,6 +3,8 @@ package com.creatures.cateringappdemo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +33,10 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
 
     InquiryDataPass inquiryDataPass;
 
+    SharedPreferences sfd_shared_preferences;
+    SharedPreferences.Editor sfd_sp_editor;
+    public static final String MyPREFERENCESFOOD = "MyPREFERENCESFOOD" ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +47,9 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
 
         add_inquiry_btn=(Button) findViewById(R.id.add_inquiry_button_sfd);
 
+        //rva_sp_editor= recylerviewadpter_shared_preferences.edit();
+
+        sfd_shared_preferences=getSharedPreferences(MyPREFERENCESFOOD, Context.MODE_PRIVATE);
 
         foodcatitem_number = getIntent().getExtras().getInt("food_cat_item");
 
@@ -277,44 +286,69 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                sfd_sp_editor=sfd_shared_preferences.edit();
+
                 //inquiryDataPass.thali_category = thalidetails_number;
                 //inquiryDataPass.food_category = foodcatitem_number;
-                Toast.makeText(SingleFoodDeatilsActivity.this, "Item is Added in Your Inquiry", Toast.LENGTH_SHORT).show();
                 //Toast.makeText(SingleFoodDeatilsActivity.this, " Thali: "+thalidetails_number+" Categories:"+foodcatitem_number, Toast.LENGTH_SHORT).show();
                 //Toast.makeText(SingleFoodDeatilsActivity.this, ""+a, Toast.LENGTH_SHORT).show();
                 //ab kya kar na just if me woh number check kar re ga toh woh number chage kar dega 1 se agar 1 hogaya mat woh item add hogaya
 
-
-                if(foodcatitem_number==1)
-                {
-                    inquiryDataPass.food_category_ff=1;
-                }
-                else if(foodcatitem_number==2)
-                {
-                    inquiryDataPass.food_category_is=2;
-                }
-                else if(foodcatitem_number==3)
-                {
-                    inquiryDataPass.food_category_cf=3;
-                }
-                else if(foodcatitem_number==4)
-                {
-                    inquiryDataPass.food_category_wd=4;
-                }
-                else if(foodcatitem_number==5)
-                {
-                    inquiryDataPass.food_category_nvs=5;
-                }
-                else if(foodcatitem_number==6)
-                {
-                    inquiryDataPass.food_category_bs=6;
-                }
-                else if(foodcatitem_number==7)
-                {
-                    inquiryDataPass.food_category_sd=7;
-                }
-                else
-                {
+                sfd_shared_preferences=getSharedPreferences("MyPREFERENCES",Context.MODE_MULTI_PROCESS);
+                int login_c=sfd_shared_preferences.getInt("LoginCounterKey",0);
+               if (login_c==1000)
+               {
+                   if(foodcatitem_number==1)
+                   {
+                       inquiryDataPass.food_category_ff=1;
+                       sfd_sp_editor.putInt("food_item_details_ff",foodcatitem_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if(foodcatitem_number==2)
+                   {
+                       inquiryDataPass.food_category_is=2;
+                       sfd_sp_editor.putInt("food_item_details_is",foodcatitem_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if(foodcatitem_number==3)
+                   {
+                       inquiryDataPass.food_category_cf=3;
+                       sfd_sp_editor.putInt("food_item_details_cf",foodcatitem_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if(foodcatitem_number==4)
+                   {
+                       inquiryDataPass.food_category_wd=4;
+                       sfd_sp_editor.putInt("food_item_details_wd",foodcatitem_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if(foodcatitem_number==5)
+                   {
+                       inquiryDataPass.food_category_nvs=5;
+                       sfd_sp_editor.putInt("food_item_details_nvs",foodcatitem_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if(foodcatitem_number==6)
+                   {
+                       inquiryDataPass.food_category_bs=6;
+                       sfd_sp_editor.putInt("food_item_details_bs",foodcatitem_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if(foodcatitem_number==7)
+                   {
+                       inquiryDataPass.food_category_sd=7;
+                       sfd_sp_editor.putInt("food_item_details_sd",foodcatitem_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else
+                   {
                     /*inquiryDataPass.food_category_sd=0;
                     inquiryDataPass.food_category_bs=0;
                     inquiryDataPass.food_category_nvs=0;
@@ -323,8 +357,8 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
                     inquiryDataPass.food_category_is=0;
                     inquiryDataPass.food_category_ff=0;*/
 
-                    Log.e("Error","Error");
-                }
+                       Log.e("Error","Error");
+                   }
 
                 /*public static int thali_category_BT = 0;
                 public static int thali_category_IT = 0;
@@ -335,36 +369,57 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
                 public static int thali_category_SIT = 0;
                 public static int thali_category_PT = 0;*/
 
-                if (thalidetails_number==11)
-                {
-                    inquiryDataPass.thali_category_BT=11;
-                }
-                else if (thalidetails_number==12)
-                {
-                    inquiryDataPass.thali_category_IT=12;
-                }
-                else if (thalidetails_number==13)
-                {
-                    inquiryDataPass.thali_category_NT=13;
-                }
-                else if (thalidetails_number==14)
-                {
-                    inquiryDataPass.thali_category_MT=14;
-                }
-                else if (thalidetails_number==15)
-                {
-                    inquiryDataPass.thali_category_PARTT=15;
-                }
-                else if (thalidetails_number==16)
-                {
-                    inquiryDataPass.thali_category_SIT=16;
-                }
-                else if (thalidetails_number==17)
-                {
-                    inquiryDataPass.thali_category_PT=17;
-                }
-                else
-                {
+                   if (thalidetails_number==11)
+                   {
+                       inquiryDataPass.thali_category_BT=11;
+                       sfd_sp_editor.putInt("food_item_details_thali_bt",thalidetails_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if (thalidetails_number==12)
+                   {
+                       inquiryDataPass.thali_category_IT=12;
+                       sfd_sp_editor.putInt("food_item_details_thali_it",thalidetails_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if (thalidetails_number==13)
+                   {
+                       inquiryDataPass.thali_category_NT=13;
+                       sfd_sp_editor.putInt("food_item_details_thali_nt",thalidetails_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if (thalidetails_number==14)
+                   {
+                       inquiryDataPass.thali_category_MT=14;
+                       sfd_sp_editor.putInt("food_item_details_thali_mt",thalidetails_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if (thalidetails_number==15)
+                   {
+                       inquiryDataPass.thali_category_PARTT=15;
+                       sfd_sp_editor.putInt("food_item_details_thali_partt",thalidetails_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if (thalidetails_number==16)
+                   {
+                       inquiryDataPass.thali_category_SIT=16;
+                       sfd_sp_editor.putInt("food_item_details_thali_sit",thalidetails_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else if (thalidetails_number==17)
+                   {
+                       inquiryDataPass.thali_category_PT=17;
+                       sfd_sp_editor.putInt("food_item_details_thali_pt",thalidetails_number);
+                       sfd_sp_editor.commit();
+                       sfd_sp_editor.apply();
+                   }
+                   else
+                   {
                     /*inquiryDataPass.thali_category_BT=0;
                     inquiryDataPass.thali_category_IT=0;
                     inquiryDataPass.thali_category_NT=0;
@@ -372,8 +427,15 @@ public class SingleFoodDeatilsActivity extends AppCompatActivity {
                     inquiryDataPass.thali_category_PARTT=0;
                     inquiryDataPass.thali_category_SIT=0;
                     inquiryDataPass.thali_category_PT=0;*/
-                    Log.e("Error","Error");
-                }
+                       Log.e("Error","Error");
+                   }
+                   Toast.makeText(SingleFoodDeatilsActivity.this, "Item is Added in Your Inquiry", Toast.LENGTH_SHORT).show();
+
+               }
+               else
+               {
+                   Toast.makeText(SingleFoodDeatilsActivity.this, "To use this Feature you need to LOGIN first", Toast.LENGTH_SHORT).show();
+               }
 
 
 

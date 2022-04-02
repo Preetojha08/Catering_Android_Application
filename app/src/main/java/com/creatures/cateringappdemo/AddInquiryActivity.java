@@ -5,6 +5,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -19,6 +21,8 @@ public class AddInquiryActivity extends AppCompatActivity {
     RecyclerView recyclerView_add_inquiry;
     RecyclerViewAdapter recyclerViewAdapter;
 
+    SharedPreferences add_inquiry_shared_preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,28 +34,31 @@ public class AddInquiryActivity extends AppCompatActivity {
 
         recyclerView_add_inquiry=(RecyclerView) findViewById(R.id.add_inquiry_recycler_view);
 
-
         add_inquiry_title = new ArrayList<>();
         add_inquiry_img = new ArrayList<>();
 
-        int cbf_1 = InquiryDataPass.food_category_ff;
-        int cbf_2 = InquiryDataPass.food_category_is;
-        int cbf_3 = InquiryDataPass.food_category_cf;
-        int cbf_4 = InquiryDataPass.food_category_wd;
-        int cbf_5 = InquiryDataPass.food_category_nvs;
-        int cbf_6 = InquiryDataPass.food_category_bs;
-        int cbf_7 = InquiryDataPass.food_category_sd;
+        add_inquiry_shared_preferences=getSharedPreferences("MyPREFERENCESFOOD", Context.MODE_MULTI_PROCESS);
 
-        int allthalis_1 = InquiryDataPass.thali_category_BT;
-        int allthalis_2 = InquiryDataPass.thali_category_IT;
-        int allthalis_3 = InquiryDataPass.thali_category_NT;
-        int allthalis_4 = InquiryDataPass.thali_category_MT;
+        //Food Categories Data
+        int cbf_1 = add_inquiry_shared_preferences.getInt("food_item_details_ff",0);
+        int cbf_2 = add_inquiry_shared_preferences.getInt("food_item_details_is",0);
+        int cbf_3 = add_inquiry_shared_preferences.getInt("food_item_details_cf",0);
+        int cbf_4 = add_inquiry_shared_preferences.getInt("food_item_details_wd",0);
 
-        int allthalis_5 = InquiryDataPass.thali_category_PARTT;
-        int allthalis_6 = InquiryDataPass.thali_category_SIT;
-        int allthalis_7 = InquiryDataPass.thali_category_PT;
+        int cbf_5 = add_inquiry_shared_preferences.getInt("food_item_details_nvs",0);
+        int cbf_6 = add_inquiry_shared_preferences.getInt("food_item_details_bs",0);
+        int cbf_7 = add_inquiry_shared_preferences.getInt("food_item_details_sd",0);
 
-        Toast.makeText(this, " "+cbf_1+" "+" "+cbf_2+" "+" "+cbf_3+" "+" "+cbf_4+" "+" "+cbf_5+" "+" "+cbf_6+" "+" "+cbf_7, Toast.LENGTH_SHORT).show();
+
+        //Thali Data
+        int allthalis_1 = add_inquiry_shared_preferences.getInt("food_item_details_thali_bt",0);
+        int allthalis_2 = add_inquiry_shared_preferences.getInt("food_item_details_thali_it",0);
+        int allthalis_3 = add_inquiry_shared_preferences.getInt("food_item_details_thali_nt",0);
+        int allthalis_4 = add_inquiry_shared_preferences.getInt("food_item_details_thali_mt",0);
+
+        int allthalis_5 = add_inquiry_shared_preferences.getInt("food_item_details_thali_partt",0);
+        int allthalis_6 = add_inquiry_shared_preferences.getInt("food_item_details_thali_sit",0);
+        int allthalis_7 = add_inquiry_shared_preferences.getInt("food_item_details_thali_pt",0);
 
         if (cbf_1 == 1)
         {
@@ -89,9 +96,7 @@ public class AddInquiryActivity extends AppCompatActivity {
             add_inquiry_img.add(R.drawable.sweet_2);
 
         }
-        /*else {
-            Log.e("Error","Error 1");
-        }*/
+
 
         if (allthalis_1==11)
         {
@@ -128,10 +133,6 @@ public class AddInquiryActivity extends AppCompatActivity {
             add_inquiry_title.add("Punjabi Thali");
             add_inquiry_img.add(R.drawable.punjabi_thali);
         }
-        /*else
-        {
-            Log.e("Error","Error 2");
-        }*/
 
 
         //TICCard
