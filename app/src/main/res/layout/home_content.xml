@@ -168,7 +168,7 @@
                                             android:layout_height="140dp"
                                             android:layout_weight="1"
                                             android:layout_gravity="center"
-                                            android:src="@drawable/contact_us" />
+                                            android:src="@drawable/new_contact_us" />
 
                                 </LinearLayout>
 

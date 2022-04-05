@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -339,14 +341,36 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     if (menu_counter==0)
                     {
                         menu_counter++;
-                        holder.sub_menu_items_card_layout.setVisibility(View.VISIBLE);
+                        Animation animation_first = AnimationUtils.loadAnimation(context,R.anim.slide_down);
                         holder.mneu_arrow_imgv.animate().rotation(180);
+                        holder.sub_menu_items_card_layout.startAnimation(animation_first);
+                        holder.sub_menu_items_card_layout.setVisibility(View.VISIBLE);
                     }
                     else
                     {
                         menu_counter--;
                         holder.mneu_arrow_imgv.animate().rotation(360);
-                        holder.sub_menu_items_card_layout.setVisibility(View.GONE);
+                        Animation animation = AnimationUtils.loadAnimation(context,R.anim.slide_up);
+                        holder.sub_menu_items_card_layout.startAnimation(animation);
+
+                        animation.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                holder.sub_menu_items_card_layout.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+
+
                     }
 
                 }
