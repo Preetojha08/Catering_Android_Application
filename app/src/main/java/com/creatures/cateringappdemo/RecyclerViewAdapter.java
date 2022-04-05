@@ -31,10 +31,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     List<Integer> images;
     LayoutInflater layoutInflater;
     int pos=0;
+    int menu_counter=0;
 
     SharedPreferences recylerviewadpter_shared_preferences;
     SharedPreferences.Editor rva_sp_editor;
 
+
+    public RecyclerViewAdapter(List<String> title,Context context,int card_val)
+    {
+        this.title = title;
+        this.context = context;
+        this.layoutInflater = LayoutInflater.from(context);
+        this.card_val = card_val;
+    }
 
 
     public RecyclerViewAdapter(List<String> title, List<String> sub_title, Context context,  List<List<SlideModel>> slide_image_models, int card_val) {
@@ -94,6 +103,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         else if (card_val==60)
         {
             view_oncreate = layoutInflater.inflate(R.layout.inquiry_card,parent,false);
+        }
+
+        else if (card_val==70)
+        {
+            view_oncreate = layoutInflater.inflate(R.layout.menu_card,parent,false);
         }
 
         else {
@@ -315,6 +329,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             });
         }
 
+        if (card_val==70)
+        {
+            holder.menu_title_tv.setText(title.get(position));
+            holder.mneu_arrow_imgv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (menu_counter==0)
+                    {
+                        menu_counter++;
+                        holder.sub_menu_items_card_layout.setVisibility(View.VISIBLE);
+                        holder.mneu_arrow_imgv.animate().rotation(180);
+                    }
+                    else
+                    {
+                        menu_counter--;
+                        holder.mneu_arrow_imgv.animate().rotation(360);
+                        holder.sub_menu_items_card_layout.setVisibility(View.GONE);
+                    }
+
+                }
+            });
+        }
+
     }
 
     @Override
@@ -340,6 +378,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView textview_inquiry_title;
 
         MaterialCardView event_display_cardView;
+        ImageView mneu_arrow_imgv;
+        TextView menu_title_tv;
+        MaterialCardView sub_menu_items_card_layout;
 
 
         public recycler_view_holder(@NonNull View itemView) {
@@ -385,6 +426,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 food_destails_title_textview=(TextView)itemView.findViewById(R.id.food_details_title_textview);
                 food_destails_sub_title_textview=(TextView)itemView.findViewById(R.id.food_details_dec_textview);
                 food_deatils_imgaeview_iv.setVisibility(View.VISIBLE);
+            }
+
+            if (card_val==70)
+            {
+                menu_title_tv=(TextView)itemView.findViewById(R.id.text_view_title_menu_item);
+                mneu_arrow_imgv=(ImageView)itemView.findViewById(R.id.arrow_image_view_menu);
+                sub_menu_items_card_layout=(MaterialCardView)itemView.findViewById(R.id.card_view_sub_menu_items);
+                sub_menu_items_card_layout.setVisibility(View.GONE);
             }
 
         }

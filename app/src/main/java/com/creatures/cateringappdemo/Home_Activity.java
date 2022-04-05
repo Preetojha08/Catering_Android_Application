@@ -237,6 +237,11 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(Home_Activity.this,ProfileActivity.class));
                 break;
 
+            case (R.id.nav_menu):
+                Toast.makeText(this, "Choose Your Food", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Home_Activity.this,MenuActivity.class));
+                break;
+
             case (R.id.nav_contact_us):
                 Toast.makeText(this, "Wide your Network", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Home_Activity.this,ContactUsActivity.class));
