@@ -31,9 +31,9 @@ public class MenuActivity extends AppCompatActivity {
 
         menu_title = new ArrayList<>();
 
-        menu_title.add("Hello World");
-        menu_title.add("Hello World");
-        menu_title.add("Hello World");
+        menu_title.add("Indian Menu");
+        menu_title.add("Punjabi Menu");
+        menu_title.add("Chinese Menu");
 
 
         recyclerViewAdapter=new RecyclerViewAdapter(menu_title,this,70);
