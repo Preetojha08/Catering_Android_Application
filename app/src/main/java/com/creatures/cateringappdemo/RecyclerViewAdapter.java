@@ -27,6 +27,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     List<String> title;
     List<String> sub_title;
+
+    List<String> sub_menu_subtitle_1;
+    List<String> sub_menu_subtitle_2;
+    List<String> sub_menu_subtitle_3;
+    List<String> sub_menu_subtitle_4;
+
     Context context;
     List<List<SlideModel>> slide_image_models;
     int card_val=0;
@@ -39,9 +45,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     SharedPreferences.Editor rva_sp_editor;
 
 
-    public RecyclerViewAdapter(List<String> title,Context context,int card_val)
+    public RecyclerViewAdapter(List<String> title,List<String> sub_menu_subtitle_1,List<String> sub_menu_subtitle_2,List<String> sub_menu_subtitle_3,List<String> sub_menu_subtitle_4,Context context,int card_val)
     {
         this.title = title;
+        this.sub_menu_subtitle_1=sub_menu_subtitle_1;
+        this.sub_menu_subtitle_2=sub_menu_subtitle_2;
+        this.sub_menu_subtitle_3=sub_menu_subtitle_3;
+        this.sub_menu_subtitle_4=sub_menu_subtitle_4;
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
         this.card_val = card_val;
@@ -334,6 +344,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         if (card_val==70)
         {
             holder.menu_title_tv.setText(title.get(position));
+            holder.sub_menu_text_view_1.setText(sub_menu_subtitle_1.get(position));
+            holder.sub_menu_text_view_2.setText(sub_menu_subtitle_2.get(position));
+            holder.sub_menu_text_view_3.setText(sub_menu_subtitle_3.get(position));
+            holder.sub_menu_text_view_4.setText(sub_menu_subtitle_4.get(position));
             holder.mneu_arrow_imgv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -361,7 +375,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                             @Override
                             public void onAnimationEnd(Animation animation) {
-                                holder.sub_menu_items_card_layout.setVisibility(View.GONE);
+                               holder.sub_menu_items_card_layout.setVisibility(View.GONE);
                             }
 
                             @Override
@@ -405,6 +419,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView mneu_arrow_imgv;
         TextView menu_title_tv;
         MaterialCardView sub_menu_items_card_layout;
+        TextView sub_menu_text_view_1,sub_menu_text_view_2,sub_menu_text_view_3,sub_menu_text_view_4,sub_menu_text_view_rm;
 
 
         public recycler_view_holder(@NonNull View itemView) {
@@ -457,6 +472,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 menu_title_tv=(TextView)itemView.findViewById(R.id.text_view_title_menu_item);
                 mneu_arrow_imgv=(ImageView)itemView.findViewById(R.id.arrow_image_view_menu);
                 sub_menu_items_card_layout=(MaterialCardView)itemView.findViewById(R.id.card_view_sub_menu_items);
+                sub_menu_text_view_1=(TextView)itemView.findViewById(R.id.text_view_submenu_1);
+                sub_menu_text_view_2=(TextView)itemView.findViewById(R.id.text_view_submenu_2);
+                sub_menu_text_view_3=(TextView)itemView.findViewById(R.id.text_view_submenu_3);
+                sub_menu_text_view_4=(TextView)itemView.findViewById(R.id.text_view_submenu_4);
+                sub_menu_text_view_rm=(TextView)itemView.findViewById(R.id.text_view_submenu_read_more);
                 sub_menu_items_card_layout.setVisibility(View.GONE);
             }
 

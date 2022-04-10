@@ -74,7 +74,7 @@
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
-                android:id="@+id/text_view_submenu_5"
+                android:id="@+id/text_view_submenu_read_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text_view_submenu_4"
