@@ -39,7 +39,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     List<Integer> images;
     LayoutInflater layoutInflater;
     int pos=0;
-    int menu_counter=0;
+    int menu_counter_0=0;
+    int menu_counter_1=0;
+    int menu_counter_2=0;
 
     SharedPreferences recylerviewadpter_shared_preferences;
     SharedPreferences.Editor rva_sp_editor;
@@ -352,39 +354,114 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onClick(View v) {
 
-                    if (menu_counter==0)
+                    if (position==0)
                     {
-                        menu_counter++;
-                        Animation animation_first = AnimationUtils.loadAnimation(context,R.anim.slide_down);
-                        holder.mneu_arrow_imgv.animate().rotation(180);
-                        holder.sub_menu_items_card_layout.startAnimation(animation_first);
-                        holder.sub_menu_items_card_layout.setVisibility(View.VISIBLE);
+                        if (menu_counter_0==0)
+                        {
+                            menu_counter_0++;
+                            Animation animation_first = AnimationUtils.loadAnimation(context,R.anim.slide_down);
+                            holder.mneu_arrow_imgv.animate().rotation(180);
+                            holder.sub_menu_items_card_layout.startAnimation(animation_first);
+                            holder.sub_menu_items_card_layout.setVisibility(View.VISIBLE);
+                        }
+                        else
+                        {
+                            menu_counter_0--;
+                            holder.mneu_arrow_imgv.animate().rotation(360);
+                            Animation animation = AnimationUtils.loadAnimation(context,R.anim.slide_up);
+                            holder.sub_menu_items_card_layout.startAnimation(animation);
+
+                            animation.setAnimationListener(new Animation.AnimationListener() {
+                                @Override
+                                public void onAnimationStart(Animation animation) {
+
+                                }
+
+                                @Override
+                                public void onAnimationEnd(Animation animation) {
+                                    holder.sub_menu_items_card_layout.setVisibility(View.GONE);
+                                }
+
+                                @Override
+                                public void onAnimationRepeat(Animation animation) {
+
+                                }
+                            });
+                        }
+                    }
+                    else if (position==1)
+                    {
+                        if (menu_counter_1==0)
+                        {
+                            menu_counter_1++;
+                            Animation animation_first = AnimationUtils.loadAnimation(context,R.anim.slide_down);
+                            holder.mneu_arrow_imgv.animate().rotation(180);
+                            holder.sub_menu_items_card_layout.startAnimation(animation_first);
+                            holder.sub_menu_items_card_layout.setVisibility(View.VISIBLE);
+                        }
+                        else
+                        {
+                            menu_counter_1--;
+                            holder.mneu_arrow_imgv.animate().rotation(360);
+                            Animation animation = AnimationUtils.loadAnimation(context,R.anim.slide_up);
+                            holder.sub_menu_items_card_layout.startAnimation(animation);
+
+                            animation.setAnimationListener(new Animation.AnimationListener() {
+                                @Override
+                                public void onAnimationStart(Animation animation) {
+
+                                }
+
+                                @Override
+                                public void onAnimationEnd(Animation animation) {
+                                    holder.sub_menu_items_card_layout.setVisibility(View.GONE);
+                                }
+
+                                @Override
+                                public void onAnimationRepeat(Animation animation) {
+
+                                }
+                            });
+                        }
+                    }
+                    else if (position==2)
+                    {
+                        if (menu_counter_2==0)
+                        {
+                            menu_counter_2++;
+                            Animation animation_first = AnimationUtils.loadAnimation(context,R.anim.slide_down);
+                            holder.mneu_arrow_imgv.animate().rotation(180);
+                            holder.sub_menu_items_card_layout.startAnimation(animation_first);
+                            holder.sub_menu_items_card_layout.setVisibility(View.VISIBLE);
+                        }
+                        else
+                        {
+                            menu_counter_2--;
+                            holder.mneu_arrow_imgv.animate().rotation(360);
+                            Animation animation = AnimationUtils.loadAnimation(context,R.anim.slide_up);
+                            holder.sub_menu_items_card_layout.startAnimation(animation);
+
+                            animation.setAnimationListener(new Animation.AnimationListener() {
+                                @Override
+                                public void onAnimationStart(Animation animation) {
+
+                                }
+
+                                @Override
+                                public void onAnimationEnd(Animation animation) {
+                                    holder.sub_menu_items_card_layout.setVisibility(View.GONE);
+                                }
+
+                                @Override
+                                public void onAnimationRepeat(Animation animation) {
+
+                                }
+                            });
+                        }
                     }
                     else
                     {
-                        menu_counter--;
-                        holder.mneu_arrow_imgv.animate().rotation(360);
-                        Animation animation = AnimationUtils.loadAnimation(context,R.anim.slide_up);
-                        holder.sub_menu_items_card_layout.startAnimation(animation);
-
-                        animation.setAnimationListener(new Animation.AnimationListener() {
-                            @Override
-                            public void onAnimationStart(Animation animation) {
-
-                            }
-
-                            @Override
-                            public void onAnimationEnd(Animation animation) {
-                               holder.sub_menu_items_card_layout.setVisibility(View.GONE);
-                            }
-
-                            @Override
-                            public void onAnimationRepeat(Animation animation) {
-
-                            }
-                        });
-
-
+                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                     }
 
                 }

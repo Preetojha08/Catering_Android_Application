@@ -44,6 +44,48 @@ public class MenuActivity extends AppCompatActivity {
         menu_title.add("Punjabi Menu");
         menu_title.add("Chinese Menu");
 
+        //2
+        menu_title.add("Indian Menu");
+        menu_title.add("Punjabi Menu");
+        menu_title.add("Chinese Menu");
+
+        //3
+        menu_title.add("Indian Menu");
+        menu_title.add("Punjabi Menu");
+        menu_title.add("Chinese Menu");
+
+        sub_menu_subtitle_1.add("Indian Welcome Drinks");
+        sub_menu_subtitle_2.add("Indian Starters");
+        sub_menu_subtitle_3.add("Indian Breads");
+        sub_menu_subtitle_4.add("Indian Sabzi");
+
+        sub_menu_subtitle_1.add("Punjabi Welcome Drinks");
+        sub_menu_subtitle_2.add("Punjabi Starters");
+        sub_menu_subtitle_3.add("Punjabi Sabzi");
+        sub_menu_subtitle_4.add("Dals And Rices");
+
+        sub_menu_subtitle_1.add("Chinese Soups");
+        sub_menu_subtitle_2.add("Chinese Starters");
+        sub_menu_subtitle_3.add("Chinese items");
+        sub_menu_subtitle_4.add("Chinese(Paneer) Sabzi");
+
+        //2
+        sub_menu_subtitle_1.add("Indian Welcome Drinks");
+        sub_menu_subtitle_2.add("Indian Starters");
+        sub_menu_subtitle_3.add("Indian Breads");
+        sub_menu_subtitle_4.add("Indian Sabzi");
+
+        sub_menu_subtitle_1.add("Punjabi Welcome Drinks");
+        sub_menu_subtitle_2.add("Punjabi Starters");
+        sub_menu_subtitle_3.add("Punjabi Sabzi");
+        sub_menu_subtitle_4.add("Dals And Rices");
+
+        sub_menu_subtitle_1.add("Chinese Soups");
+        sub_menu_subtitle_2.add("Chinese Starters");
+        sub_menu_subtitle_3.add("Chinese items");
+        sub_menu_subtitle_4.add("Chinese(Paneer) Sabzi");
+
+        //3
         sub_menu_subtitle_1.add("Indian Welcome Drinks");
         sub_menu_subtitle_2.add("Indian Starters");
         sub_menu_subtitle_3.add("Indian Breads");
