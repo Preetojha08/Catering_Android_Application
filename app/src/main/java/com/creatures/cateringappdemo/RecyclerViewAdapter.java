@@ -42,6 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     int menu_counter_0=0;
     int menu_counter_1=0;
     int menu_counter_2=0;
+    int menu_counter=0;
 
     SharedPreferences recylerviewadpter_shared_preferences;
     SharedPreferences.Editor rva_sp_editor;
@@ -461,7 +462,38 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     }
                     else
                     {
-                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                        if (menu_counter==0)
+                        {
+                            menu_counter++;
+                            Animation animation_first = AnimationUtils.loadAnimation(context,R.anim.slide_down);
+                            holder.mneu_arrow_imgv.animate().rotation(180);
+                            holder.sub_menu_items_card_layout.startAnimation(animation_first);
+                            holder.sub_menu_items_card_layout.setVisibility(View.VISIBLE);
+                        }
+                        else
+                        {
+                            menu_counter--;
+                            holder.mneu_arrow_imgv.animate().rotation(360);
+                            Animation animation = AnimationUtils.loadAnimation(context,R.anim.slide_up);
+                            holder.sub_menu_items_card_layout.startAnimation(animation);
+
+                            animation.setAnimationListener(new Animation.AnimationListener() {
+                                @Override
+                                public void onAnimationStart(Animation animation) {
+
+                                }
+
+                                @Override
+                                public void onAnimationEnd(Animation animation) {
+                                    holder.sub_menu_items_card_layout.setVisibility(View.GONE);
+                                }
+
+                                @Override
+                                public void onAnimationRepeat(Animation animation) {
+
+                                }
+                            });
+                        }
                     }
 
                 }

@@ -19,6 +19,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:id="@+id/sub_menuitems_relative_layout"
             android:layout_height="wrap_content">
 
             <TextView
