@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent mySuperIntent = new Intent(MainActivity.this, Home_Activity.class);
                     startActivity(mySuperIntent);
-                    Log.i("Splash Screen Information","The Splash Screen is working in this application");
+                    Log.i("Splash Screen Information","The Splash Screen is working Good in this application");
 
                     finish();
                 }

@@ -21,6 +21,7 @@ public class ContactUsActivity extends AppCompatActivity {
         contact_us_phone_ll=(LinearLayout) findViewById(R.id.contact_us_phone);
         contact_us_add_ll=(LinearLayout) findViewById(R.id.contact_us_address);
 
+        //call kare ga
         contact_us_phone_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +35,7 @@ public class ContactUsActivity extends AppCompatActivity {
         String message="This is an Example Mail";
         String to ="example@gmail.com";
 
+        //mail jaaye ga
         contact_us_mail_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
