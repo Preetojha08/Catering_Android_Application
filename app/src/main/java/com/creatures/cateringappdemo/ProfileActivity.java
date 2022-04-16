@@ -36,7 +36,6 @@ public class ProfileActivity extends AppCompatActivity {
         pro_shared_preferences=getSharedPreferences("MyPREFERENCES", Context.MODE_MULTI_PROCESS);
 
         String name,mail,number,password;
-        int a;
 
         name=pro_shared_preferences.getString("nameKey",null);
         mail=pro_shared_preferences.getString("emailKey",null);

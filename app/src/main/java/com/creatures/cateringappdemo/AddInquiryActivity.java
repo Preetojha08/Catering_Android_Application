@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,6 +24,26 @@ public class AddInquiryActivity extends AppCompatActivity {
     RecyclerViewAdapter recyclerViewAdapter;
 
     SharedPreferences add_inquiry_shared_preferences;
+    String single_user_inquiry_items_cbf_1;
+    String single_user_inquiry_items_cbf_2;
+    String single_user_inquiry_items_cbf_3;
+    String single_user_inquiry_items_cbf_4;
+    String single_user_inquiry_items_cbf_5;
+    String single_user_inquiry_items_cbf_6;
+    String single_user_inquiry_items_cbf_7;
+
+    String single_user_inquiry_items_allthalis_11;
+    String single_user_inquiry_items_allthalis_12;
+    String single_user_inquiry_items_allthalis_13;
+    String single_user_inquiry_items_allthalis_14;
+    String single_user_inquiry_items_allthalis_15;
+    String single_user_inquiry_items_allthalis_16;
+    String single_user_inquiry_items_allthalis_17;
+
+    String inquiry_items_first="The Inquiry is about ";
+    String user_inquiry_items_cbf;
+    String user_inquiry_items__allthalis;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,40 +82,48 @@ public class AddInquiryActivity extends AppCompatActivity {
         int allthalis_6 = add_inquiry_shared_preferences.getInt("food_item_details_thali_sit",0);
         int allthalis_7 = add_inquiry_shared_preferences.getInt("food_item_details_thali_pt",0);
 
+
         if (cbf_1 == 1)
         {
             add_inquiry_title.add("Fast Food");
             add_inquiry_img.add(R.drawable.ff_1);
+            single_user_inquiry_items_cbf_1="Fast Food";
         }
         if (cbf_2 == 2)
         {
             add_inquiry_title.add("Indian Starters");
             add_inquiry_img.add(R.drawable.is_2);
+            single_user_inquiry_items_cbf_2="Indian Starters";
         }
         if (cbf_3 == 3)
         {
             add_inquiry_title.add("Chinese Food");
             add_inquiry_img.add(R.drawable.chinese_1);
+            single_user_inquiry_items_cbf_3="Chinese Food";
         }
         if (cbf_4 == 4)
         {
             add_inquiry_title.add("Welcome Drinks");
             add_inquiry_img.add(R.drawable.drinks_3);
+            single_user_inquiry_items_cbf_4="Welcome Drinks";
         }
         if (cbf_5 == 5)
         {
             add_inquiry_title.add("Non-Veg Starters");
             add_inquiry_img.add(R.drawable.nv_3);
+            single_user_inquiry_items_cbf_5="Non-Veg Starters";
         }
         if (cbf_6 == 6)
         {
             add_inquiry_title.add("Barbeque Starters");
             add_inquiry_img.add(R.drawable.bar_2);
+            single_user_inquiry_items_cbf_6="Barbeque Starters";
         }
         if (cbf_7 == 7)
         {
             add_inquiry_title.add("Sweet Dishes");
             add_inquiry_img.add(R.drawable.sweet_2);
+            single_user_inquiry_items_cbf_7="Sweet Dishes";
 
         }
 
@@ -102,44 +132,68 @@ public class AddInquiryActivity extends AppCompatActivity {
         {
             add_inquiry_title.add("Basic Thali");
             add_inquiry_img.add(R.drawable.basic_thali);
+            single_user_inquiry_items_allthalis_11="Basic Thali";
         }
         if (allthalis_2==12)
         {
             add_inquiry_title.add("Indian Thali");
             add_inquiry_img.add(R.drawable.india_thali);
+            single_user_inquiry_items_allthalis_12="Indian Thali";
         }
         if (allthalis_3==13)
         {
             add_inquiry_title.add("Nawab Thali");
             add_inquiry_img.add(R.drawable.delux_thali);
+            single_user_inquiry_items_allthalis_13="Nawab Thali";
         }
         if (allthalis_4==14)
         {
             add_inquiry_title.add("Maharaja Thali");
             add_inquiry_img.add(R.drawable.maha_raja);
+            single_user_inquiry_items_allthalis_14="Maharaja Thali";
         }
         if (allthalis_5==15)
         {
             add_inquiry_title.add("Party Thali");
             add_inquiry_img.add(R.drawable.party_thali);
+            single_user_inquiry_items_allthalis_15="Party Thali";
         }
         if (allthalis_6==16)
         {
             add_inquiry_title.add("South Indian Thali");
             add_inquiry_img.add(R.drawable.south_thali);
+            single_user_inquiry_items_allthalis_16="South Indian Thali";
         }
         if (allthalis_7==17)
         {
             add_inquiry_title.add("Punjabi Thali");
             add_inquiry_img.add(R.drawable.punjabi_thali);
+            single_user_inquiry_items_allthalis_17="Punjabi Thali";
         }
 
+        user_inquiry_items_cbf="The Inquiry is about different Categories of Food which are"+single_user_inquiry_items_cbf_1+", "+single_user_inquiry_items_cbf_2+", "+single_user_inquiry_items_cbf_3+", "+single_user_inquiry_items_cbf_4+", "+single_user_inquiry_items_cbf_5+", "+single_user_inquiry_items_cbf_6+", "+single_user_inquiry_items_cbf_7+". ";
+        user_inquiry_items__allthalis="The Inquiry is about different thails which are "+single_user_inquiry_items_allthalis_11+", "+single_user_inquiry_items_allthalis_12+", "+single_user_inquiry_items_allthalis_13+", "+single_user_inquiry_items_allthalis_14+", "+single_user_inquiry_items_allthalis_15+", "+single_user_inquiry_items_allthalis_16+", "+single_user_inquiry_items_allthalis_17+". ";
 
-        //TICCard
+        String name,mail,number;
+
+        name=add_inquiry_shared_preferences.getString("nameKey",null);
+        mail=add_inquiry_shared_preferences.getString("emailKey",null);
+        number=add_inquiry_shared_preferences.getString("phoneKey",null);
+
+        //TICCard Toast.makeText(this, ""+user_inquiry_items_cbf, Toast.LENGTH_SHORT).show();
 
         recyclerViewAdapter=new RecyclerViewAdapter(add_inquiry_title,add_inquiry_img,this,60);
         recyclerView_add_inquiry.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView_add_inquiry.setAdapter(recyclerViewAdapter);
+
+        ImageView next_imageView=findViewById(R.id.next_add_inquiry_image_view);
+        next_imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
 
     }

@@ -390,6 +390,8 @@ public class Welcome_Activity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
                                         SharedPreferences.Editor sp_editor = shared_preferences.edit();
                                         login_counter=1000;
+                                        skip_counter=0;
+                                        sp_editor.putInt("SkipMenuCounterKey",skip_counter);
                                         sp_editor.putInt("LoginCounterKey",login_counter);
                                         sp_editor.commit();
                                         sp_editor.apply();
@@ -439,6 +441,13 @@ public class Welcome_Activity extends AppCompatActivity {
                                     String result = putData.getResult();
                                     if (result.equals("Login Success"))
                                     {
+                                        SharedPreferences.Editor sp_editor = shared_preferences.edit();
+                                        login_counter=1000;
+                                        skip_counter=0;
+                                        sp_editor.putInt("SkipMenuCounterKey",skip_counter);
+                                        sp_editor.putInt("LoginCounterKey",login_counter);
+                                        sp_editor.commit();
+                                        sp_editor.apply();
                                         Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
                                         finish();

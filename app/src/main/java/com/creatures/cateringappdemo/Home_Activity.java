@@ -177,6 +177,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
         if (skip_c==500)
         {
+            Toast.makeText(this, ""+skip_c, Toast.LENGTH_SHORT).show();
             navigationView.inflateMenu(R.menu.skip_nav_home_menu_drawer);
         }
         else
