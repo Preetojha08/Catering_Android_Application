@@ -50,7 +50,6 @@ public class AddInquiryActivity extends AppCompatActivity {
     String user_inquiry_items_cbf;
     String user_inquiry_items_allthalis;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +66,6 @@ public class AddInquiryActivity extends AppCompatActivity {
 
         add_inquiry_title = new ArrayList<>();
         add_inquiry_img = new ArrayList<>();
-
-        add_inquiry_shared_preferences=getSharedPreferences("MyPREFERENCESFOOD", Context.MODE_MULTI_PROCESS);
 
         //Food Categories Data
         int cbf_1 = add_inquiry_shared_preferences.getInt("food_item_details_ff",0);
@@ -234,8 +231,7 @@ public class AddInquiryActivity extends AppCompatActivity {
                         data[2] = mail;
                         data[3] = user_inquiry_items_allthalis;
                         data[4] = user_inquiry_items_cbf; //192.168.1.101 http://192.168.64.2/test_login/signup.php http://192.168.64.2/ http://192.168.64.2/new_post_test/post_signup.php http://192.168.64.2/test_login/signup.php
-                        //data[3] = email;
-                        //PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/signup_login_test/signup.php", "POST", field, data);
+
                         PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/catering_project/add_inquiry.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
@@ -245,11 +241,55 @@ public class AddInquiryActivity extends AppCompatActivity {
                                 {
                                     Toast.makeText(AddInquiryActivity.this, "Inquiry Added Successfully", Toast.LENGTH_SHORT).show();
                                     Log.e("Adding Inquiry error","Error Msg: "+result);
+                                    add_inquiry_shared_preferences=getSharedPreferences("MyPREFERENCESFOOD", Context.MODE_MULTI_PROCESS);
+
+                                    SharedPreferences.Editor sp_editor = add_inquiry_shared_preferences.edit();
+
+                                    sp_editor.putInt("food_item_details_ff",0);
+                                    sp_editor.putInt("food_item_details_is",0);
+                                    sp_editor.putInt("food_item_details_cf",0);
+                                    sp_editor.putInt("food_item_details_wd",0);
+                                    sp_editor.putInt("food_item_details_nvs",0);
+                                    sp_editor.putInt("food_item_details_bs",0);
+                                    sp_editor.putInt("food_item_details_sd",0);
+
+                                    sp_editor.putInt("food_item_details_thali_bt",0);
+                                    sp_editor.putInt("food_item_details_thali_it",0);
+                                    sp_editor.putInt("food_item_details_thali_nt",0);
+                                    sp_editor.putInt("food_item_details_thali_mt",0);
+                                    sp_editor.putInt("food_item_details_thali_partt",0);
+                                    sp_editor.putInt("food_item_details_thali_sit",0);
+                                    sp_editor.putInt("food_item_details_thali_pt",0);
+
+                                    sp_editor.commit();
+                                    sp_editor.apply();
                                 }
                                 else if(result.equals("Already have an InquiryData Added Successfully"))
                                 {
                                     Toast.makeText(AddInquiryActivity.this, "Inquiry Updated", Toast.LENGTH_SHORT).show();
                                     Log.e("Adding Inquiry error","Error Msg: "+result);
+                                    add_inquiry_shared_preferences=getSharedPreferences("MyPREFERENCESFOOD", Context.MODE_MULTI_PROCESS);
+
+                                    SharedPreferences.Editor sp_editor = add_inquiry_shared_preferences.edit();
+
+                                    sp_editor.putInt("food_item_details_ff",0);
+                                    sp_editor.putInt("food_item_details_is",0);
+                                    sp_editor.putInt("food_item_details_cf",0);
+                                    sp_editor.putInt("food_item_details_wd",0);
+                                    sp_editor.putInt("food_item_details_nvs",0);
+                                    sp_editor.putInt("food_item_details_bs",0);
+                                    sp_editor.putInt("food_item_details_sd",0);
+
+                                    sp_editor.putInt("food_item_details_thali_bt",0);
+                                    sp_editor.putInt("food_item_details_thali_it",0);
+                                    sp_editor.putInt("food_item_details_thali_nt",0);
+                                    sp_editor.putInt("food_item_details_thali_mt",0);
+                                    sp_editor.putInt("food_item_details_thali_partt",0);
+                                    sp_editor.putInt("food_item_details_thali_sit",0);
+                                    sp_editor.putInt("food_item_details_thali_pt",0);
+
+                                    sp_editor.commit();
+                                    sp_editor.apply();
                                 }
                                 else
                                 {

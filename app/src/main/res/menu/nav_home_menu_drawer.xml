@@ -6,7 +6,7 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single" >
-        <item android:title="E - Commerce Application">
+        <item android:title="Catering Application">
 
             <menu>
 
