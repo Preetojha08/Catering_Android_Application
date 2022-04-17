@@ -204,7 +204,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         if (card_val==60)
         {
             holder.textview_inquiry_title.setText(title.get(position));
-            holder.circleImageView_inquiry_images.setImageResource(images.get(position));
+            holder.ImageView_inquiry_images.setImageResource(images.get(position));
         }
 
         if (card_val==40)
@@ -355,7 +355,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onClick(View v) {
 
-                    if (position==0)
+                    pos=holder.getPosition();
+
+                    if (pos==0)
                     {
                         if (menu_counter_0==0)
                         {
@@ -390,7 +392,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             });
                         }
                     }
-                    else if (position==1)
+                    else if (pos==1)
                     {
                         if (menu_counter_1==0)
                         {
@@ -425,7 +427,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             });
                         }
                     }
-                    else if (position==2)
+                    else if (pos==2)
                     {
                         if (menu_counter_2==0)
                         {
@@ -521,7 +523,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         CardView card_view_food_deatils;
 
-        CircleImageView circleImageView_inquiry_images;
+        ImageView ImageView_inquiry_images;
         TextView textview_inquiry_title;
 
         MaterialCardView event_display_cardView;
@@ -563,7 +565,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
             if (card_val==60)
             {
-                circleImageView_inquiry_images=(CircleImageView) itemView.findViewById(R.id.circle_imageview_inquiry_card);
+               ImageView_inquiry_images=(ImageView)itemView.findViewById(R.id.circle_imageview_inquiry_card);
                 textview_inquiry_title=(TextView) itemView.findViewById(R.id.textview_inquiry_card);
             }
 

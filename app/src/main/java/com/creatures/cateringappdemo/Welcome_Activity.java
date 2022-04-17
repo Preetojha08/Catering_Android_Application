@@ -289,9 +289,7 @@ public class Welcome_Activity extends AppCompatActivity {
                                         InquiryDataPass.u_password=password;
 
                                         welcome_counter=100;
-
                                         SharedPreferences.Editor sp_editor = shared_preferences.edit();
-
                                         sp_editor.putInt("welcomeCounterKey",welcome_counter);
 
                                         sp_editor.putString("nameKey",username);
@@ -300,6 +298,7 @@ public class Welcome_Activity extends AppCompatActivity {
                                         sp_editor.putString("passwordKey",password);
                                         sp_editor.commit();
                                         sp_editor.apply();
+
 
                                     }
                                     else

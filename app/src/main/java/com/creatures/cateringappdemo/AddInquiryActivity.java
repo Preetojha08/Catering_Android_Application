@@ -6,12 +6,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +28,7 @@ public class AddInquiryActivity extends AppCompatActivity {
     List<Integer> add_inquiry_img;
     RecyclerView recyclerView_add_inquiry;
     RecyclerViewAdapter recyclerViewAdapter;
+    ProgressBar progress_bar_add_inquiry;
 
     SharedPreferences add_inquiry_shared_preferences;
     String single_user_inquiry_items_cbf_1;
@@ -40,9 +47,8 @@ public class AddInquiryActivity extends AppCompatActivity {
     String single_user_inquiry_items_allthalis_16;
     String single_user_inquiry_items_allthalis_17;
 
-    String inquiry_items_first="The Inquiry is about ";
     String user_inquiry_items_cbf;
-    String user_inquiry_items__allthalis;
+    String user_inquiry_items_allthalis;
 
 
     @Override
@@ -53,6 +59,9 @@ public class AddInquiryActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_add_inquiry);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("   Add Inquiry");
+
+        progress_bar_add_inquiry=(ProgressBar)findViewById(R.id.add_inquiry_progress_bar);
+        progress_bar_add_inquiry.setVisibility(View.GONE);
 
         recyclerView_add_inquiry=(RecyclerView) findViewById(R.id.add_inquiry_recycler_view);
 
@@ -172,14 +181,17 @@ public class AddInquiryActivity extends AppCompatActivity {
         }
 
         user_inquiry_items_cbf="The Inquiry is about different Categories of Food which are"+single_user_inquiry_items_cbf_1+", "+single_user_inquiry_items_cbf_2+", "+single_user_inquiry_items_cbf_3+", "+single_user_inquiry_items_cbf_4+", "+single_user_inquiry_items_cbf_5+", "+single_user_inquiry_items_cbf_6+", "+single_user_inquiry_items_cbf_7+". ";
-        user_inquiry_items__allthalis="The Inquiry is about different thails which are "+single_user_inquiry_items_allthalis_11+", "+single_user_inquiry_items_allthalis_12+", "+single_user_inquiry_items_allthalis_13+", "+single_user_inquiry_items_allthalis_14+", "+single_user_inquiry_items_allthalis_15+", "+single_user_inquiry_items_allthalis_16+", "+single_user_inquiry_items_allthalis_17+". ";
+        user_inquiry_items_allthalis="The Inquiry is about different thails which are "+single_user_inquiry_items_allthalis_11+", "+single_user_inquiry_items_allthalis_12+", "+single_user_inquiry_items_allthalis_13+", "+single_user_inquiry_items_allthalis_14+", "+single_user_inquiry_items_allthalis_15+", "+single_user_inquiry_items_allthalis_16+", "+single_user_inquiry_items_allthalis_17+". ";
 
         String name,mail,number;
+
+        add_inquiry_shared_preferences=getSharedPreferences("MyPREFERENCES", Context.MODE_MULTI_PROCESS);
 
         name=add_inquiry_shared_preferences.getString("nameKey",null);
         mail=add_inquiry_shared_preferences.getString("emailKey",null);
         number=add_inquiry_shared_preferences.getString("phoneKey",null);
 
+        Toast.makeText(this, ""+name+" "+mail+" "+number, Toast.LENGTH_LONG).show();
         //TICCard Toast.makeText(this, ""+user_inquiry_items_cbf, Toast.LENGTH_SHORT).show();
 
         recyclerViewAdapter=new RecyclerViewAdapter(add_inquiry_title,add_inquiry_img,this,60);
@@ -190,6 +202,69 @@ public class AddInquiryActivity extends AppCompatActivity {
         next_imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String a,b,c,d,e;
+                int an;
+                a="Aaa";
+                b="123456";
+                c="Ccc";
+                d="Thali";
+                e="Food";
+
+                //Start ProgressBar first (Set visibility VISIBLE)
+                progress_bar_add_inquiry.setVisibility(View.VISIBLE);
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Starting Write and Read data with URL
+                        //Creating array for parameters
+                        String[] field = new String[5];
+                        field[0] = "inquiry_user_name";
+                        field[1] = "inquiry_user_mobile";
+                        field[2] = "inquiry_user_mail";
+                        field[3] = "inquiry_thalis";
+                        field[4] = "inquiry_category_food";
+                        //field[3] = "email";
+
+                        //Creating array for data
+                        String[] data = new String[5];
+                        data[0] = name;
+                        data[1] = number;
+                        data[2] = mail;
+                        data[3] = user_inquiry_items_allthalis;
+                        data[4] = user_inquiry_items_cbf; //192.168.1.101 http://192.168.64.2/test_login/signup.php http://192.168.64.2/ http://192.168.64.2/new_post_test/post_signup.php http://192.168.64.2/test_login/signup.php
+                        //data[3] = email;
+                        //PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/signup_login_test/signup.php", "POST", field, data);
+                        PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/catering_project/add_inquiry.php", "POST", field, data);
+                        if (putData.startPut()) {
+                            if (putData.onComplete()) {
+                                progress_bar_add_inquiry.setVisibility(View.GONE);
+                                String result = putData.getResult();
+                                if (result.equals("Data Added Successfully"))
+                                {
+                                    Toast.makeText(AddInquiryActivity.this, "Inquiry Added Successfully", Toast.LENGTH_SHORT).show();
+                                    Log.e("Adding Inquiry error","Error Msg: "+result);
+                                }
+                                else if(result.equals("Already have an InquiryData Added Successfully"))
+                                {
+                                    Toast.makeText(AddInquiryActivity.this, "Inquiry Updated", Toast.LENGTH_SHORT).show();
+                                    Log.e("Adding Inquiry error","Error Msg: "+result);
+                                }
+                                else
+                                {
+                                    Toast.makeText(AddInquiryActivity.this, "  Error  ", Toast.LENGTH_LONG).show();
+                                    Log.e("Adding Inquiry error","Error Msg: "+result);
+                                    /*tv_error.setText(result);*/
+                                }
+                                //End ProgressBar (Set visibility to GONE)
+                                Log.i("PutData", result);
+                            }
+                        }
+                        //End Write and Read data with URL
+                    }
+                });
+                //End of handler
 
             }
         });
