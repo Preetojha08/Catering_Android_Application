@@ -30,6 +30,10 @@ public class AddInquiryActivity extends AppCompatActivity {
     RecyclerViewAdapter recyclerViewAdapter;
     ProgressBar progress_bar_add_inquiry;
 
+    View view_bg;
+
+    int recycler_view_zero_item=0;
+
     SharedPreferences add_inquiry_shared_preferences;
     String single_user_inquiry_items_cbf_1;
     String single_user_inquiry_items_cbf_2;
@@ -59,6 +63,9 @@ public class AddInquiryActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("   Add Inquiry");
 
+        view_bg=(View)findViewById(R.id.inquiry_view_background_for_processbar);
+        view_bg.setVisibility(View.GONE);
+
         progress_bar_add_inquiry=(ProgressBar)findViewById(R.id.add_inquiry_progress_bar);
         progress_bar_add_inquiry.setVisibility(View.GONE);
 
@@ -66,6 +73,8 @@ public class AddInquiryActivity extends AppCompatActivity {
 
         add_inquiry_title = new ArrayList<>();
         add_inquiry_img = new ArrayList<>();
+
+        add_inquiry_shared_preferences=getSharedPreferences("MyPREFERENCESFOOD", Context.MODE_MULTI_PROCESS);
 
         //Food Categories Data
         int cbf_1 = add_inquiry_shared_preferences.getInt("food_item_details_ff",0);
@@ -188,7 +197,7 @@ public class AddInquiryActivity extends AppCompatActivity {
         mail=add_inquiry_shared_preferences.getString("emailKey",null);
         number=add_inquiry_shared_preferences.getString("phoneKey",null);
 
-        Toast.makeText(this, ""+name+" "+mail+" "+number, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, ""+name+" "+mail+" "+number, Toast.LENGTH_LONG).show();
         //TICCard Toast.makeText(this, ""+user_inquiry_items_cbf, Toast.LENGTH_SHORT).show();
 
         recyclerViewAdapter=new RecyclerViewAdapter(add_inquiry_title,add_inquiry_img,this,60);
@@ -200,116 +209,179 @@ public class AddInquiryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String a,b,c,d,e;
-                int an;
-                a="Aaa";
-                b="123456";
-                c="Ccc";
-                d="Thali";
-                e="Food";
+                if (cbf_1>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (cbf_2>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (cbf_3>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (cbf_4>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (cbf_5>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (cbf_6>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (cbf_7>0)
+                {
+                    recycler_view_zero_item++;
+                }
 
-                //Start ProgressBar first (Set visibility VISIBLE)
-                progress_bar_add_inquiry.setVisibility(View.VISIBLE);
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        //Starting Write and Read data with URL
-                        //Creating array for parameters
-                        String[] field = new String[5];
-                        field[0] = "inquiry_user_name";
-                        field[1] = "inquiry_user_mobile";
-                        field[2] = "inquiry_user_mail";
-                        field[3] = "inquiry_thalis";
-                        field[4] = "inquiry_category_food";
-                        //field[3] = "email";
+                //About Thalis
+                if (allthalis_1>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (allthalis_2>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (allthalis_3>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (allthalis_4>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (allthalis_5>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (allthalis_6>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if (allthalis_7>0)
+                {
+                    recycler_view_zero_item++;
+                }
+                if(recycler_view_zero_item==0)
+                {
+                    Toast.makeText(AddInquiryActivity.this, "Select item for Inquiry", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    //Start ProgressBar first (Set visibility VISIBLE)
+                    progress_bar_add_inquiry.setVisibility(View.VISIBLE);
+                    view_bg.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Starting Write and Read data with URL
+                            //Creating array for parameters
+                            String[] field = new String[5];
+                            field[0] = "inquiry_user_name";
+                            field[1] = "inquiry_user_mobile";
+                            field[2] = "inquiry_user_mail";
+                            field[3] = "inquiry_thalis";
+                            field[4] = "inquiry_category_food";
+                            //field[3] = "email";
 
-                        //Creating array for data
-                        String[] data = new String[5];
-                        data[0] = name;
-                        data[1] = number;
-                        data[2] = mail;
-                        data[3] = user_inquiry_items_allthalis;
-                        data[4] = user_inquiry_items_cbf; //192.168.1.101 http://192.168.64.2/test_login/signup.php http://192.168.64.2/ http://192.168.64.2/new_post_test/post_signup.php http://192.168.64.2/test_login/signup.php
+                            //Creating array for data
+                            String[] data = new String[5];
+                            data[0] = name;
+                            data[1] = number;
+                            data[2] = mail;
+                            data[3] = user_inquiry_items_allthalis;
+                            data[4] = user_inquiry_items_cbf; //192.168.1.101 http://192.168.64.2/test_login/signup.php http://192.168.64.2/ http://192.168.64.2/new_post_test/post_signup.php http://192.168.64.2/test_login/signup.php
 
-                        PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/catering_project/add_inquiry.php", "POST", field, data);
-                        if (putData.startPut()) {
-                            if (putData.onComplete()) {
-                                progress_bar_add_inquiry.setVisibility(View.GONE);
-                                String result = putData.getResult();
-                                if (result.equals("Data Added Successfully"))
-                                {
-                                    Toast.makeText(AddInquiryActivity.this, "Inquiry Added Successfully", Toast.LENGTH_SHORT).show();
-                                    Log.e("Adding Inquiry error","Error Msg: "+result);
-                                    add_inquiry_shared_preferences=getSharedPreferences("MyPREFERENCESFOOD", Context.MODE_MULTI_PROCESS);
+                            PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/catering_project/add_inquiry.php", "POST", field, data);
+                            if (putData.startPut()) {
+                                if (putData.onComplete()) {
+                                    progress_bar_add_inquiry.setVisibility(View.GONE);
+                                    view_bg.setVisibility(View.GONE);
+                                    String result = putData.getResult();
+                                    if (result.equals("Data Added Successfully"))
+                                    {
+                                        Toast.makeText(AddInquiryActivity.this, "Inquiry Added Successfully", Toast.LENGTH_SHORT).show();
+                                        Log.e("Adding Inquiry error","Error Msg: "+result);
 
-                                    SharedPreferences.Editor sp_editor = add_inquiry_shared_preferences.edit();
+                                        add_inquiry_shared_preferences = getSharedPreferences("MyPREFERENCESFOOD", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor sp_editor = add_inquiry_shared_preferences.edit();
 
-                                    sp_editor.putInt("food_item_details_ff",0);
-                                    sp_editor.putInt("food_item_details_is",0);
-                                    sp_editor.putInt("food_item_details_cf",0);
-                                    sp_editor.putInt("food_item_details_wd",0);
-                                    sp_editor.putInt("food_item_details_nvs",0);
-                                    sp_editor.putInt("food_item_details_bs",0);
-                                    sp_editor.putInt("food_item_details_sd",0);
+                                        sp_editor.putInt("food_item_details_ff",0);
+                                        sp_editor.putInt("food_item_details_is",0);
+                                        sp_editor.putInt("food_item_details_cf",0);
+                                        sp_editor.putInt("food_item_details_wd",0);
+                                        sp_editor.putInt("food_item_details_nvs",0);
+                                        sp_editor.putInt("food_item_details_bs",0);
+                                        sp_editor.putInt("food_item_details_sd",0);
 
-                                    sp_editor.putInt("food_item_details_thali_bt",0);
-                                    sp_editor.putInt("food_item_details_thali_it",0);
-                                    sp_editor.putInt("food_item_details_thali_nt",0);
-                                    sp_editor.putInt("food_item_details_thali_mt",0);
-                                    sp_editor.putInt("food_item_details_thali_partt",0);
-                                    sp_editor.putInt("food_item_details_thali_sit",0);
-                                    sp_editor.putInt("food_item_details_thali_pt",0);
+                                        sp_editor.putInt("food_item_details_thali_bt",0);
+                                        sp_editor.putInt("food_item_details_thali_it",0);
+                                        sp_editor.putInt("food_item_details_thali_nt",0);
+                                        sp_editor.putInt("food_item_details_thali_mt",0);
+                                        sp_editor.putInt("food_item_details_thali_partt",0);
+                                        sp_editor.putInt("food_item_details_thali_sit",0);
+                                        sp_editor.putInt("food_item_details_thali_pt",0);
 
-                                    sp_editor.commit();
-                                    sp_editor.apply();
+                                        sp_editor.commit();
+                                        sp_editor.apply();
+
+                                        startActivity(new Intent(AddInquiryActivity.this,Home_Activity.class));
+
+                                    }
+                                    else if(result.equals("Already have an InquiryData Added Successfully"))
+                                    {
+                                        Toast.makeText(AddInquiryActivity.this, "Inquiry Updated", Toast.LENGTH_SHORT).show();
+                                        Log.e("Adding Inquiry error","Error Msg: "+result);
+
+                                        add_inquiry_shared_preferences = getSharedPreferences("MyPREFERENCESFOOD", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor sp_editor = add_inquiry_shared_preferences.edit();
+
+                                        sp_editor.putInt("food_item_details_ff",0);
+                                        sp_editor.putInt("food_item_details_is",0);
+                                        sp_editor.putInt("food_item_details_cf",0);
+                                        sp_editor.putInt("food_item_details_wd",0);
+                                        sp_editor.putInt("food_item_details_nvs",0);
+                                        sp_editor.putInt("food_item_details_bs",0);
+                                        sp_editor.putInt("food_item_details_sd",0);
+
+                                        sp_editor.putInt("food_item_details_thali_bt",0);
+                                        sp_editor.putInt("food_item_details_thali_it",0);
+                                        sp_editor.putInt("food_item_details_thali_nt",0);
+                                        sp_editor.putInt("food_item_details_thali_mt",0);
+                                        sp_editor.putInt("food_item_details_thali_partt",0);
+                                        sp_editor.putInt("food_item_details_thali_sit",0);
+                                        sp_editor.putInt("food_item_details_thali_pt",0);
+
+                                        sp_editor.commit();
+                                        sp_editor.apply();
+
+                                        startActivity(new Intent(AddInquiryActivity.this,Home_Activity.class));
+
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(AddInquiryActivity.this, "  Error  ", Toast.LENGTH_LONG).show();
+                                        Log.e("Adding Inquiry error","Error Msg: "+result);
+                                        /*tv_error.setText(result);*/
+                                    }
+                                    //End ProgressBar (Set visibility to GONE)
+                                    Log.i("PutData", result);
                                 }
-                                else if(result.equals("Already have an InquiryData Added Successfully"))
-                                {
-                                    Toast.makeText(AddInquiryActivity.this, "Inquiry Updated", Toast.LENGTH_SHORT).show();
-                                    Log.e("Adding Inquiry error","Error Msg: "+result);
-                                    add_inquiry_shared_preferences=getSharedPreferences("MyPREFERENCESFOOD", Context.MODE_MULTI_PROCESS);
-
-                                    SharedPreferences.Editor sp_editor = add_inquiry_shared_preferences.edit();
-
-                                    sp_editor.putInt("food_item_details_ff",0);
-                                    sp_editor.putInt("food_item_details_is",0);
-                                    sp_editor.putInt("food_item_details_cf",0);
-                                    sp_editor.putInt("food_item_details_wd",0);
-                                    sp_editor.putInt("food_item_details_nvs",0);
-                                    sp_editor.putInt("food_item_details_bs",0);
-                                    sp_editor.putInt("food_item_details_sd",0);
-
-                                    sp_editor.putInt("food_item_details_thali_bt",0);
-                                    sp_editor.putInt("food_item_details_thali_it",0);
-                                    sp_editor.putInt("food_item_details_thali_nt",0);
-                                    sp_editor.putInt("food_item_details_thali_mt",0);
-                                    sp_editor.putInt("food_item_details_thali_partt",0);
-                                    sp_editor.putInt("food_item_details_thali_sit",0);
-                                    sp_editor.putInt("food_item_details_thali_pt",0);
-
-                                    sp_editor.commit();
-                                    sp_editor.apply();
-                                }
-                                else
-                                {
-                                    Toast.makeText(AddInquiryActivity.this, "  Error  ", Toast.LENGTH_LONG).show();
-                                    Log.e("Adding Inquiry error","Error Msg: "+result);
-                                    /*tv_error.setText(result);*/
-                                }
-                                //End ProgressBar (Set visibility to GONE)
-                                Log.i("PutData", result);
                             }
+                            //End Write and Read data with URL
                         }
-                        //End Write and Read data with URL
-                    }
-                });
-                //End of handler
+                    });
+                    //End of handler
+                }
 
             }
         });
-
-
 
     }
 }
