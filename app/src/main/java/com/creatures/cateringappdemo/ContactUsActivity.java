@@ -32,8 +32,8 @@ public class ContactUsActivity extends AppCompatActivity {
         });
 
         String subject="Inquiry Mail";
-        String message="This is an Example Mail";
-        String to ="example@gmail.com";
+        String message="This is an Inquiry Mail to know we are inquiry about your firm";
+        String to ="cateringapplication@gmail.com";
 
         //mail jaaye ga
         contact_us_mail_ll.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +43,8 @@ public class ContactUsActivity extends AppCompatActivity {
                 email.putExtra(Intent.EXTRA_EMAIL, to);
                 email.putExtra(Intent.EXTRA_SUBJECT, subject);
                 email.putExtra(Intent.EXTRA_TEXT, message);
+
+                startActivity(Intent.createChooser(email, "Choose an Email client :"));
             }
         });
 
