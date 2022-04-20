@@ -177,7 +177,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
         if (skip_c==500)
         {
-            Toast.makeText(this, ""+skip_c, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, ""+skip_c, Toast.LENGTH_SHORT).show();
             navigationView.inflateMenu(R.menu.skip_nav_home_menu_drawer);
         }
         else
@@ -246,6 +246,20 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
             case (R.id.nav_contact_us):
                 Toast.makeText(this, "Wide your Network", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Home_Activity.this,ContactUsActivity.class));
+                break;
+
+            case (R.id.nav_registration):
+                Toast.makeText(this, "Register Yourself", Toast.LENGTH_SHORT).show();
+                InquiryDataPass.registration_layout++;
+                startActivity(new Intent(Home_Activity.this,Welcome_Activity.class));
+                finishAffinity();
+                break;
+
+            case (R.id.nav_login):
+                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+                InquiryDataPass.login_layout++;
+                startActivity(new Intent(Home_Activity.this,Welcome_Activity.class));
+                finishAffinity();
                 break;
 
             case (R.id.nav_add_inquiry):

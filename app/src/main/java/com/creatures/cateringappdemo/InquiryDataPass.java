@@ -14,6 +14,9 @@ public class InquiryDataPass {
 
     public static int profile_activitor = 0;
 
+    public static int login_layout = 0;
+    public static int registration_layout = 0;
+
     //Thalis
     public static int thali_category_BT = 0;
     public static int thali_category_IT = 0;

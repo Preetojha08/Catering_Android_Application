@@ -120,6 +120,16 @@ public class Welcome_Activity extends AppCompatActivity {
             }
         });
 
+        if (InquiryDataPass.login_layout > 0)
+        {
+            login_layout.setVisibility(View.VISIBLE);
+            registration_layout.setVisibility(View.GONE);
+            view_bg_color.setVisibility(View.GONE);
+            welcome_layout.setVisibility(View.GONE);
+
+            InquiryDataPass.login_layout=0;
+        }
+
         login_textview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,6 +164,16 @@ public class Welcome_Activity extends AppCompatActivity {
                 registration_layout.startAnimation(animation_second);
             }
         });
+
+        if (InquiryDataPass.registration_layout > 0)
+        {
+            login_layout.setVisibility(View.GONE);
+            registration_layout.setVisibility(View.VISIBLE);
+            view_bg_color.setVisibility(View.GONE);
+            welcome_layout.setVisibility(View.GONE);
+
+            InquiryDataPass.registration_layout=0;
+        }
 
         register_textview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -409,6 +429,9 @@ public class Welcome_Activity extends AppCompatActivity {
                         }
                     });
                     //End of handler
+
+                    //Json Data lene wala
+
 
                 }
                 else

@@ -38,7 +38,7 @@ public class ContactUsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:"+1234678909));
+                callIntent.setData(Uri.parse("tel:"+1234560890));
                 startActivity(callIntent);
             }
         });
