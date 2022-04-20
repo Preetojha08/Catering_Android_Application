@@ -24,6 +24,9 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.regex.Pattern;
 
 public class Welcome_Activity extends AppCompatActivity {
@@ -353,6 +356,8 @@ public class Welcome_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 String log_username,log_password,log_email;
 
+
+
                 view_bg_color.setVisibility(View.GONE);
                 log_username=tiet_log_username.getText().toString();
                 log_password=tiet_log_password.getText().toString();
@@ -404,9 +409,29 @@ public class Welcome_Activity extends AppCompatActivity {
                                     progress_bar_reg.setVisibility(View.GONE);
                                     view_bg_color.setVisibility(View.GONE);
                                     String result = putData.getResult();
-                                    if (result.equals("Login Success"))
+
+                                    //Email or Password May Be wrong
+                                    if (result.equals("Email or Password May Be wrong"))
                                     {
                                         Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
+                                        Log.i("World","Hello");
+                                    }
+                                    //Username or Password wrong
+                                    else if (result.equals("Username or Password wrong"))
+                                    {
+                                        Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
+                                        Log.i("World","Hello");
+                                    }
+                                    //All fields are not required
+                                    else if (result.equals("All fields are required"))
+                                    {
+                                        Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
+                                        Log.i("World","Hello");
+                                    }
+
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(), "Login Successfully", Toast.LENGTH_SHORT).show();
                                         SharedPreferences.Editor sp_editor = shared_preferences.edit();
                                         login_counter=1000;
                                         skip_counter=0;
@@ -414,15 +439,45 @@ public class Welcome_Activity extends AppCompatActivity {
                                         sp_editor.putInt("LoginCounterKey",login_counter);
                                         sp_editor.commit();
                                         sp_editor.apply();
+
+                                        String user_info = result;
+
+                                        try
+                                        {
+                                            JSONArray array = new JSONArray(user_info);
+                                            for(int i=0; i < array.length(); i++)
+                                            {
+                                                JSONObject object = array.getJSONObject(i);
+                                                String id = object.getString("id");
+                                                String uname = object.getString("username");
+                                                String password_log = object.getString("password");
+                                                String mobile_phone = object.getString("mobile");
+                                                String acc_date = object.getString("account_created_date");
+                                                String email_id = object.getString("email");
+
+                                                sp_editor = shared_preferences.edit();
+
+                                                sp_editor.putString("nameKey",uname);
+                                                sp_editor.putString("emailKey",email_id);
+                                                sp_editor.putString("phoneKey",mobile_phone);
+                                                sp_editor.putString("passwordKey",log_password);
+                                                sp_editor.commit();
+                                                sp_editor.apply();
+                                            }
+                                        }
+                                        catch (Exception exception)
+                                        {
+                                            exception.printStackTrace();
+                                        }
+
                                         startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
                                         finish();
                                     }
-                                    else
-                                    {
-                                        Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
-                                    }
+
                                     //End ProgressBar (Set visibility to GONE)
                                     Log.i("PutData", result);
+                                    String user_info = result;
+
                                 }
                             }
                             //End Write and Read data with URL
@@ -430,7 +485,6 @@ public class Welcome_Activity extends AppCompatActivity {
                     });
                     //End of handler
 
-                    //Json Data lene wala
 
 
                 }
@@ -461,8 +515,28 @@ public class Welcome_Activity extends AppCompatActivity {
                                     progress_bar_reg.setVisibility(View.GONE);
                                     view_bg_color.setVisibility(View.GONE);
                                     String result = putData.getResult();
-                                    if (result.equals("Login Success"))
+
+                                    //Email or Password May Be wrong
+                                    if (result.equals("Email or Password May Be wrong"))
                                     {
+                                        Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
+                                        Log.i("World","Hello");
+                                    }
+                                    //Username or Password wrong
+                                    else if (result.equals("Username or Password wrong"))
+                                    {
+                                        Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
+                                        Log.i("World","Hello");
+                                    }
+                                    //All fields are not required
+                                    else if (result.equals("All fields are required"))
+                                    {
+                                        Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
+                                        Log.i("World","Hello");
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(), "Login Successfully", Toast.LENGTH_SHORT).show();
                                         SharedPreferences.Editor sp_editor = shared_preferences.edit();
                                         login_counter=1000;
                                         skip_counter=0;
@@ -470,15 +544,43 @@ public class Welcome_Activity extends AppCompatActivity {
                                         sp_editor.putInt("LoginCounterKey",login_counter);
                                         sp_editor.commit();
                                         sp_editor.apply();
-                                        Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
+
+                                        String user_info = result;
+
+                                        try
+                                        {
+                                            JSONArray array = new JSONArray(user_info);
+                                            for(int i=0; i < array.length(); i++)
+                                            {
+                                                JSONObject object = array.getJSONObject(i);
+                                                String id = object.getString("id");
+                                                String uname = object.getString("username");
+                                                String password_log = object.getString("password");
+                                                String mobile_phone = object.getString("mobile");
+                                                String acc_date = object.getString("account_created_date");
+                                                String email_id = object.getString("email");
+
+                                                sp_editor = shared_preferences.edit();
+
+                                                sp_editor.putString("nameKey",uname);
+                                                sp_editor.putString("emailKey",email_id);
+                                                sp_editor.putString("phoneKey",mobile_phone);
+                                                sp_editor.putString("passwordKey",log_password);
+                                                sp_editor.commit();
+                                                sp_editor.apply();
+                                            }
+                                        }
+                                        catch (Exception exception)
+                                        {
+                                            exception.printStackTrace();
+                                        }
+
                                         startActivity(new Intent(Welcome_Activity.this,Home_Activity.class));
                                         finish();
                                     }
-                                    else
-                                    {
-                                        Toast.makeText(getApplicationContext(), ""+result, Toast.LENGTH_SHORT).show();
-                                        Log.i("World","Hello");
-                                    }
+
+
+
                                     //End ProgressBar (Set visibility to GONE)
                                     Log.i("PutData", result);
                                 }
