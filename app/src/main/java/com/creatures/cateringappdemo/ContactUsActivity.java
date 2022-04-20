@@ -7,10 +7,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class ContactUsActivity extends AppCompatActivity {
 
     LinearLayout contact_us_mail_ll,contact_us_phone_ll,contact_us_add_ll;
+    TextView textView_mail,textView_call;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +23,18 @@ public class ContactUsActivity extends AppCompatActivity {
         contact_us_phone_ll=(LinearLayout) findViewById(R.id.contact_us_phone);
         contact_us_add_ll=(LinearLayout) findViewById(R.id.contact_us_address);
 
+        textView_mail=(TextView)findViewById(R.id.text_view_contact_us_mail);
+        textView_call=(TextView)findViewById(R.id.text_view_contact_us_call);
+
         //call kare ga
         contact_us_phone_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               textView_call.callOnClick();
+            }
+        });
+
+        textView_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
@@ -37,6 +49,13 @@ public class ContactUsActivity extends AppCompatActivity {
 
         //mail jaaye ga
         contact_us_mail_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView_mail.callOnClick();
+            }
+        });
+
+        textView_mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent email = new Intent(Intent.ACTION_SEND);
