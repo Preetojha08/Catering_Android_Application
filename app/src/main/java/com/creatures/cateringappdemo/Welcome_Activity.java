@@ -449,7 +449,7 @@ public class Welcome_Activity extends AppCompatActivity {
                                             for(int i=0; i < array.length(); i++)
                                             {
                                                 JSONObject object = array.getJSONObject(i);
-                                                String id = object.getString("id");
+                                                String user_id = object.getString("id");
                                                 String uname = object.getString("username");
                                                 String password_log = object.getString("password");
                                                 String mobile_phone = object.getString("mobile");
@@ -458,6 +458,7 @@ public class Welcome_Activity extends AppCompatActivity {
 
                                                 sp_editor = shared_preferences.edit();
 
+                                                sp_editor.putString("userIdKey",user_id);
                                                 sp_editor.putString("nameKey",uname);
                                                 sp_editor.putString("emailKey",email_id);
                                                 sp_editor.putString("phoneKey",mobile_phone);
