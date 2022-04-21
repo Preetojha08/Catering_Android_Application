@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
+                    Toast.makeText(MainActivity.this, ""+a, Toast.LENGTH_SHORT).show();
                     Intent mySuperIntent = new Intent(MainActivity.this, Home_Activity.class);
                     startActivity(mySuperIntent);
                     Log.i("Splash Screen Information","The Splash Screen is working Good in this application");
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
+                    Toast.makeText(MainActivity.this, ""+a, Toast.LENGTH_SHORT).show();
                     Intent mySuperIntent = new Intent(MainActivity.this, Welcome_Activity.class);
                     startActivity(mySuperIntent);
                     Log.i("Splash Screen Information","The Splash Screen is working in this application");

@@ -311,10 +311,9 @@ public class Welcome_Activity extends AppCompatActivity {
                                         InquiryDataPass.u_mobile_no=mobile_no;
                                         InquiryDataPass.u_password=password;
 
-                                        welcome_counter=100;
-                                        SharedPreferences.Editor sp_editor = shared_preferences.edit();
-                                        sp_editor.putInt("welcomeCounterKey",welcome_counter);
 
+                                        SharedPreferences.Editor sp_editor = shared_preferences.edit();
+                                        
                                         sp_editor.putString("nameKey",username);
                                         sp_editor.putString("emailKey",email);
                                         sp_editor.putString("phoneKey",mobile_no);
@@ -435,6 +434,8 @@ public class Welcome_Activity extends AppCompatActivity {
                                         SharedPreferences.Editor sp_editor = shared_preferences.edit();
                                         login_counter=1000;
                                         skip_counter=0;
+                                        welcome_counter=100;
+                                        sp_editor.putInt("welcomeCounterKey",welcome_counter);
                                         sp_editor.putInt("SkipMenuCounterKey",skip_counter);
                                         sp_editor.putInt("LoginCounterKey",login_counter);
                                         sp_editor.commit();
@@ -540,6 +541,8 @@ public class Welcome_Activity extends AppCompatActivity {
                                         SharedPreferences.Editor sp_editor = shared_preferences.edit();
                                         login_counter=1000;
                                         skip_counter=0;
+                                        welcome_counter=100;
+                                        sp_editor.putInt("welcomeCounterKey",welcome_counter);
                                         sp_editor.putInt("SkipMenuCounterKey",skip_counter);
                                         sp_editor.putInt("LoginCounterKey",login_counter);
                                         sp_editor.commit();
