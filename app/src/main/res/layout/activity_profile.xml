@@ -20,6 +20,14 @@
             android:background="@color/colorPrimaryDark"
             app:titleTextColor="@color/white"/>
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:theme="@style/RedAccent"
+            android:layout_centerInParent="true"
+            android:id="@+id/progress_bar_profile"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_below="@+id/toolbar_profile"

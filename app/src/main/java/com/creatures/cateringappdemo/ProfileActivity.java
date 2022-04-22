@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,8 @@ public class ProfileActivity extends AppCompatActivity {
     Button profile_update_btn;
 
     String name,mail,number,password,id;
+
+    ProgressBar profile_progress_bar;
 
     public static final Pattern mobile_Pattern = Pattern.compile("[0-9]{10}");
     public static final Pattern email_Pattern = Pattern.compile("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+");
@@ -52,6 +55,9 @@ public class ProfileActivity extends AppCompatActivity {
         profile_update_btn=(Button)findViewById(R.id.profile_update_button);
 
         pro_title_textview=(TextView)findViewById(R.id.text_view_username_profile_title);
+
+        profile_progress_bar=(ProgressBar)findViewById(R.id.progress_bar_profile);
+        profile_progress_bar.setVisibility(View.GONE);
 
         pro_shared_preferences=getSharedPreferences("MyPREFERENCES", Context.MODE_MULTI_PROCESS);
 
@@ -125,6 +131,7 @@ public class ProfileActivity extends AppCompatActivity {
                 {
                     //Start ProgressBar first (Set visibility VISIBLE)
 
+                    profile_progress_bar.setVisibility(View.VISIBLE);
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
                         @Override
@@ -175,11 +182,12 @@ public class ProfileActivity extends AppCompatActivity {
                                         tiet_pro_email.setText(mail);
                                         tiet_pro_number.setText(number);
                                         tiet_pro_password.setText(password);
-
+                                        profile_progress_bar.setVisibility(View.GONE);
                                     }
                                     else
                                     {
                                         Toast.makeText(ProfileActivity.this, ""+result, Toast.LENGTH_SHORT).show();
+                                        profile_progress_bar.setVisibility(View.GONE);
                                     }
                                     //End ProgressBar (Set visibility to GONE)
                                     Log.i("PutData", result);
