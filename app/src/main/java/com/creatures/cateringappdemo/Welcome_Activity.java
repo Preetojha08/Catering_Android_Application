@@ -96,6 +96,8 @@ public class Welcome_Activity extends AppCompatActivity {
                 SharedPreferences.Editor sp_editor = shared_preferences.edit();
 
                 skip_counter=500;
+                login_counter=0;
+                sp_editor.putInt("LoginCounterKey",login_counter);
                 sp_editor.putInt("SkipMenuCounterKey",skip_counter);
                 sp_editor.commit();
                 sp_editor.apply();
