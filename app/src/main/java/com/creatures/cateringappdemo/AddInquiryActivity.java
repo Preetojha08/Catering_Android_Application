@@ -189,11 +189,12 @@ public class AddInquiryActivity extends AppCompatActivity {
         user_inquiry_items_cbf="The Inquiry is about different Categories of Food which are"+single_user_inquiry_items_cbf_1+", "+single_user_inquiry_items_cbf_2+", "+single_user_inquiry_items_cbf_3+", "+single_user_inquiry_items_cbf_4+", "+single_user_inquiry_items_cbf_5+", "+single_user_inquiry_items_cbf_6+", "+single_user_inquiry_items_cbf_7+". ";
         user_inquiry_items_allthalis="The Inquiry is about different thails which are "+single_user_inquiry_items_allthalis_11+", "+single_user_inquiry_items_allthalis_12+", "+single_user_inquiry_items_allthalis_13+", "+single_user_inquiry_items_allthalis_14+", "+single_user_inquiry_items_allthalis_15+", "+single_user_inquiry_items_allthalis_16+", "+single_user_inquiry_items_allthalis_17+". ";
 
-        String name,mail,number;
+        String name,mail,number,id;
 
         add_inquiry_shared_preferences=getSharedPreferences("MyPREFERENCES", Context.MODE_MULTI_PROCESS);
 
         name=add_inquiry_shared_preferences.getString("nameKey",null);
+        id=add_inquiry_shared_preferences.getString("userIdKey",null);
         mail=add_inquiry_shared_preferences.getString("emailKey",null);
         number=add_inquiry_shared_preferences.getString("phoneKey",null);
 
@@ -282,22 +283,23 @@ public class AddInquiryActivity extends AppCompatActivity {
                         public void run() {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
-                            String[] field = new String[5];
+                            String[] field = new String[6];
                             field[0] = "inquiry_user_name";
                             field[1] = "inquiry_user_mobile";
                             field[2] = "inquiry_user_mail";
                             field[3] = "inquiry_thalis";
                             field[4] = "inquiry_category_food";
+                            field[5] = "inquiry_user_id";
                             //field[3] = "email";
 
                             //Creating array for data
-                            String[] data = new String[5];
+                            String[] data = new String[6];
                             data[0] = name;
                             data[1] = number;
                             data[2] = mail;
                             data[3] = user_inquiry_items_allthalis;
                             data[4] = user_inquiry_items_cbf; //192.168.1.101 http://192.168.64.2/test_login/signup.php http://192.168.64.2/ http://192.168.64.2/new_post_test/post_signup.php http://192.168.64.2/test_login/signup.php
-
+                            data[5] = id;
                             PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/catering_project/add_inquiry.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
