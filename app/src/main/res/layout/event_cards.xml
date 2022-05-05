@@ -7,7 +7,7 @@
     app:cardPreventCornerOverlap="false"
     app:cardCornerRadius="@dimen/_10sdp"
     android:id="@+id/event_card_display"
-    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardBackgroundColor="@color/purple_200"
     android:layout_marginVertical="@dimen/_5sdp"
     android:layout_marginHorizontal="@dimen/_5sdp">
 
@@ -20,6 +20,7 @@
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:scaleType="fitXY"
+           android:src="@drawable/catering_application"
            android:backgroundTint="#2D90E0EF"
            android:id="@+id/event_image_view" />
 

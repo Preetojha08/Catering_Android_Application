@@ -3,6 +3,7 @@ package com.creatures.cateringappdemo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.card.MaterialCardView;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -33,9 +35,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     List<String> sub_menu_subtitle_3;
     List<String> sub_menu_subtitle_4;
 
+    List<ModelClass> data_list;
     Context context;
-    List<List<SlideModel>> slide_image_models;
     int card_val=0;
+
+    List<List<SlideModel>> slide_image_models;
+
     List<Integer> images;
     LayoutInflater layoutInflater;
     int pos=0;
@@ -47,8 +52,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     SharedPreferences recylerviewadpter_shared_preferences;
     SharedPreferences.Editor rva_sp_editor;
 
+    public RecyclerViewAdapter(Context context,List<ModelClass> data_list, int card_val) {
+        this.data_list = data_list;
+        this.context = context;
+        this.card_val = card_val;
+        this.layoutInflater = LayoutInflater.from(context);
+    }
 
-    public RecyclerViewAdapter(List<String> title,List<String> sub_menu_subtitle_1,List<String> sub_menu_subtitle_2,List<String> sub_menu_subtitle_3,List<String> sub_menu_subtitle_4,Context context,int card_val)
+    public RecyclerViewAdapter(List<String> title, List<String> sub_menu_subtitle_1, List<String> sub_menu_subtitle_2, List<String> sub_menu_subtitle_3, List<String> sub_menu_subtitle_4, Context context, int card_val)
     {
         this.title = title;
         this.sub_menu_subtitle_1=sub_menu_subtitle_1;
@@ -92,7 +103,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public recycler_view_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view_oncreate;
-
+        LayoutInflater inflater = LayoutInflater.from(context);
         if (card_val==10){
             view_oncreate = layoutInflater.inflate(R.layout.food_by_categories,parent,false);
 
@@ -151,55 +162,35 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         if (card_val==30)
         {
-            holder.event_text.setText(title.get(position));
-            holder.event_img.setImageResource(images.get(position));
+            Log.i("Recycler View Data part 2"," Error aaya hai ");
+            ModelClass model_class = data_list.get(position);
+
+            holder.event_text.setText(model_class.getName());
+            String img_url = model_class.getImg_link();
+            int id = model_class.getID();
+            String name = model_class.getName();
+
+            Log.i("Recycler View Data part 2"," Error aaya hai ID "+id+" Name:"+img_url+".");
+            try
+            {
+                Picasso.get().load(img_url).into(holder.event_img);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                Log.i("Recycler View Data part 2"," Error aaya hai ID "+id+" Name:"+img_url+".");
+            }
 
             holder.event_display_cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    pos=holder.getPosition();
-                    pos++;
-
-
-                    if (pos==1)
-                    {
-                        Intent i = new Intent(context,EventDeatilsActivity.class);
-                        i.putExtra("event_item",31);
-                        holder.itemView.getContext().startActivity(i);
-                    }
-                    else if (pos==2)
-                    {
-                        Intent i = new Intent(context,EventDeatilsActivity.class);
-                        i.putExtra("event_item",32);
-                        holder.itemView.getContext().startActivity(i);
-                    }
-                    else if (pos==3)
-                    {
-                        Intent i = new Intent(context,EventDeatilsActivity.class);
-                        i.putExtra("event_item",33);
-                        holder.itemView.getContext().startActivity(i);
-                    }
-                    else if (pos==4)
-                    {
-                        Intent i = new Intent(context,EventDeatilsActivity.class);
-                        i.putExtra("event_item",34);
-                        holder.itemView.getContext().startActivity(i);
-                    }
-                    else if (pos==5)
-                    {
-                        Intent i = new Intent(context,EventDeatilsActivity.class);
-                        i.putExtra("event_item",35);
-                        holder.itemView.getContext().startActivity(i);
-                    }
-                    else if (pos==6)
-                    {
-                        Intent i = new Intent(context,EventDeatilsActivity.class);
-                        i.putExtra("event_item",36);
-                        holder.itemView.getContext().startActivity(i);
-                    }
-
+                    Intent i = new Intent(context,EventDeatilsActivity.class);
+                    i.putExtra("event_id",id);
+                    i.putExtra("event_name",name);
+                    holder.itemView.getContext().startActivity(i);
                 }
             });
+
         }
         if (card_val==60)
         {
@@ -280,10 +271,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         if (card_val==50)
         {
-            holder.food_destails_title_textview.setText(title.get(position));
-            holder.food_destails_sub_title_textview.setText(sub_title.get(position));
-            holder.food_deatils_imgaeview_iv.setImageResource(images.get(position));
+            ModelClass model_class = data_list.get(position);
 
+
+            holder.food_destails_title_textview.setText(model_class.getName());
+            holder.food_destails_sub_title_textview.setText(model_class.getDescription());
+
+            int event_id = model_class.getID();
+            String event_name = model_class.getName();
+            String img_link = model_class.getImg_link();
+
+            try
+            {
+                Picasso.get().load(img_link).into(holder.food_deatils_imgaeview_iv);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                Log.e("Recycler View Data part 2"," Error aaya hai");
+            }
 
             holder.card_view_food_deatils.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -291,7 +297,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                     pos=holder.getPosition();
                     pos++;
-
 
                     if (pos==1)
                     {
@@ -342,6 +347,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 }
             });
+
+
+
         }
 
         if (card_val==70)
@@ -506,7 +514,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return title.size();
+        if (card_val==30 || card_val==50)
+        {
+            return data_list.size();
+        }
+        else
+        {
+            return title.size();
+        }
     }
 
     public class recycler_view_holder extends RecyclerView.ViewHolder{

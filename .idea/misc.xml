@@ -15,7 +15,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3088803088803089" />
-        <entry key="app/src/main/res/layout/activity_single_food_deatils.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/activity_single_food_deatils.xml" value="0.4444444444444444" />
         <entry key="app/src/main/res/layout/activity_view_all_categories.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_view_all_thali.xml" value="0.28072916666666664" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.4530718994140625" />
@@ -23,7 +23,7 @@
         <entry key="app/src/main/res/layout/book_by_thali.xml" value="0.25" />
         <entry key="app/src/main/res/layout/event_cards.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/food_by_categories.xml" value="0.2947916666666667" />
-        <entry key="app/src/main/res/layout/food_deatils.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/food_deatils.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/food_details.xml" value="0.22552083333333334" />
         <entry key="app/src/main/res/layout/home_content.xml" value="0.15" />
         <entry key="app/src/main/res/layout/inquiry_card.xml" value="0.22" />

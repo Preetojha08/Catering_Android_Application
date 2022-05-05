@@ -6,15 +6,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ViewAllThaliActivity extends AppCompatActivity {
 
-    List<String> viewallthali_title;
-    List<String> viewallthali_sub_title;
-    List<Integer> viewallthali_img;
+
+    private static final String URL_PRODUCTS ="https://preetojhadatabasetrail.000webhostapp.com/catering_project/fetch_thali_data.php";
+    List<ModelClass> thalis_data_list;
 
     RecyclerViewAdapter recyclerViewAdapter;
     RecyclerView recyclerView_viewallthali;
@@ -30,7 +41,14 @@ public class ViewAllThaliActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("   Order By Thali");
 
         recyclerView_viewallthali=(RecyclerView)findViewById(R.id.recyclerview_view_all_Thali);
+        recyclerView_viewallthali.setHasFixedSize(true);
+        recyclerView_viewallthali.setLayoutManager(new LinearLayoutManager(this));
 
+        thalis_data_list = new ArrayList<>();
+
+        loadThalisData();
+
+        /*
         viewallthali_title = new ArrayList<>();
         viewallthali_sub_title = new ArrayList<>();
         viewallthali_img  = new ArrayList<>();
@@ -63,11 +81,56 @@ public class ViewAllThaliActivity extends AppCompatActivity {
         viewallthali_img.add(R.drawable.punjabi_thali);
         //viewallthali_img.add(R.drawable.chinese);
 
-
         recyclerViewAdapter=new RecyclerViewAdapter(viewallthali_title,viewallthali_sub_title,viewallthali_img,this,50);
         recyclerView_viewallthali.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView_viewallthali.setAdapter(recyclerViewAdapter);
+        */
 
 
+
+
+    }
+
+    private void loadThalisData()
+    {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_PRODUCTS, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray array = new JSONArray(response);
+
+                    for (int i = 0; i < array.length(); i++) {
+
+                        //getting product object from json array
+                        JSONObject thalis_data_obj = array.getJSONObject(i);
+
+                        //adding the product to product list
+                        thalis_data_list.add(new ModelClass(
+                                thalis_data_obj.getInt("thali_id"),
+                                thalis_data_obj.getString("thali_name"),
+                                thalis_data_obj.getString("thali_desc"),
+                                thalis_data_obj.getString("thali_img_link")
+
+                        ));
+                    }
+                    /*ProductsAdapter adapter = new ProductsAdapter(MainActivity.this, productList);
+                    recyclerView.setAdapter(adapter);*/
+
+                    recyclerViewAdapter = new RecyclerViewAdapter(ViewAllThaliActivity.this, thalis_data_list,50);
+                    recyclerView_viewallthali.setAdapter(recyclerViewAdapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 }

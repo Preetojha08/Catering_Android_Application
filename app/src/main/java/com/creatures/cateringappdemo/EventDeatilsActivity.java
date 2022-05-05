@@ -4,15 +4,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class EventDeatilsActivity extends AppCompatActivity {
 
 
     TextView event_det_textview_heading,event_det_textview_items,event_det_textview_counters,event_det_textview_money;
+    TextView event_desc;
     ImageView singleeventdetails_imageview;
+    int id;
+    String event_id;
+    String event_name;
+    String Event_Name,Event_Desc,Event_menu,Event_Counter,Event_Budget,Event_ImgLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +37,7 @@ public class EventDeatilsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("   Event Details");
 
+        event_desc=(TextView)findViewById(R.id.textview_items_single_event_description);
         event_det_textview_heading=(TextView) findViewById(R.id.textview_heading_single_eventdeatils);
         event_det_textview_items=(TextView) findViewById(R.id.textview_items_single_eventdeatils);
         event_det_textview_counters=(TextView) findViewById(R.id.textview_counters_single_eventdeatils);
@@ -30,60 +45,120 @@ public class EventDeatilsActivity extends AppCompatActivity {
 
         singleeventdetails_imageview=(ImageView) findViewById(R.id.image_view_single_event_details);
 
-        int event_counter = getIntent().getExtras().getInt("event_item");
+        id = getIntent().getExtras().getInt("event_id");
+        event_name= getIntent().getExtras().getString("event_name");
 
-        if (event_counter == 31)
-        {
-            event_det_textview_heading.setText("Reception Ceremony");
-            event_det_textview_items.setText("Indian Thali, 5 Indian Staters, 3 Sweet Dish");
-            event_det_textview_counters.setText("Total 10 Counter");
-            event_det_textview_money.setText("Approx Budget is 800 Person");
-            singleeventdetails_imageview.setImageResource(R.drawable.eeception);
-        }
-        else if (event_counter == 32)
-        {
-            event_det_textview_heading.setText("Engagement Ceremony");
-            event_det_textview_items.setText("Basic Thali, 2 Indian Staters, 1 Sweet Dish");
-            event_det_textview_counters.setText("Total 8 Counter");
-            event_det_textview_money.setText("Approx Budget is 700 Person");
-            singleeventdetails_imageview.setImageResource(R.drawable.engagement);
+        event_id = String.valueOf(id);
 
-        }
-        else if (event_counter == 33)
-        {
-            event_det_textview_heading.setText("Birthday Party");
-            event_det_textview_items.setText("Party Thali, 5 Indian Staters, 3 Sweet Dish");
-            event_det_textview_counters.setText("Total 6 Counter");
-            event_det_textview_money.setText("Approx Budget is 500 Person");
-            singleeventdetails_imageview.setImageResource(R.drawable.party);
-        }
-        else if (event_counter == 34)
-        {
-            event_det_textview_heading.setText("Wedding Ceremony");
-            event_det_textview_items.setText("Indian Thali,Maharaja Thali, 6 Indian Staters, 4 Sweet Dish");
-            event_det_textview_counters.setText("Total 15 Counter");
-            event_det_textview_money.setText("Approx Budget is 800 Person");
-            singleeventdetails_imageview.setImageResource(R.drawable.wedding);
-        }
-        else if (event_counter == 35)
-        {
-            event_det_textview_heading.setText("Corporate Event");
-            event_det_textview_items.setText("5 Indian Staters, 3 Sweet Dish");
-            event_det_textview_counters.setText("Total 3 Counter");
-            event_det_textview_money.setText("Approx Budget is 400 Person");
-            singleeventdetails_imageview.setImageResource(R.drawable.corporate);
-        }
-        else if (event_counter == 36)
-        {
-            event_det_textview_heading.setText("Inauguration Ceremony");
-            event_det_textview_items.setText("Deluxe Thali, 5 Indian Staters, 3 Sweet Dish");
-            event_det_textview_counters.setText("Total 4 Counter");
-            event_det_textview_money.setText("Approx Budget is 500 Person");
-            singleeventdetails_imageview.setImageResource(R.drawable.inauguration);
-        }
-        else
-        {
-            Log.e("Error","Error");
-        }
+
+
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                //Starting Write and Read data with URL
+                //Creating array for parameters
+                String[] field = new String[2];
+                field[0] = "event_id";
+                field[1] = "event_name";
+
+                //field[3] = "email";
+
+                //Creating array for data
+                String[] data = new String[2];
+                data[0] = event_id;
+                data[1] = event_name;
+
+                //PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/signup_login_test/signup.php", "POST", field, data);
+                PutData putData = new PutData("https://preetojhadatabasetrail.000webhostapp.com/catering_project/fectch_single_event_details.php", "POST", field, data);
+                if (putData.startPut()) {
+                    if (putData.onComplete()) {
+
+                        String result = putData.getResult();
+                        if (result.equals("Some Thing is Wrong"))
+                        {
+                            Toast.makeText(EventDeatilsActivity.this, ""+result, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (result.equals("All fields are required"))
+                        {
+                            Toast.makeText(EventDeatilsActivity.this, ""+result, Toast.LENGTH_SHORT).show();
+                        }
+                        else if (result.equals("Error:"))
+                        {
+                            Toast.makeText(EventDeatilsActivity.this, ""+result, Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+
+                            try
+                            {
+                                JSONArray array = new JSONArray(result);
+                                for(int i=0; i < array.length(); i++)
+                                {
+                                    JSONObject object = array.getJSONObject(i);
+                                    String Event_Id = object.getString("event_id");
+                                    Event_Name = object.getString("event_name");
+                                    Event_Desc = object.getString("event_desc");
+                                    Event_menu = object.getString("event_menu");
+                                    Event_Counter = object.getString("event_counter");
+                                    Event_Budget = object.getString("event_price");
+                                    Event_ImgLink = object.getString("event_img_link");
+                                    String Event_Date = object.getString("event_issuing_datee");
+
+                                }
+
+                                event_det_textview_heading.setText(Event_Name);
+                                event_desc.setText(Event_Desc);
+                                event_det_textview_items.setText(Event_menu);
+                                String front_counters = "Upto"+Event_Counter+" Counters";
+                                event_det_textview_counters.setText(front_counters);
+                                String front_money = "Approx Budget "+Event_Budget+" ₹";
+                                event_det_textview_money.setText(front_money);
+
+                                try
+                                {
+                                    Picasso.get().load(Event_ImgLink).into(singleeventdetails_imageview);
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+
+                                Log.i("Lootdata", "Information "+Event_Name+", "+Event_Desc+", "+Event_menu+", "+Event_Counter+", "+Event_Budget);
+
+                            }
+                            catch (Exception exception)
+                            {
+                                exception.printStackTrace();
+                                event_det_textview_heading.setText(Event_Name);
+                                event_desc.setText(Event_Desc);
+                                event_det_textview_items.setText(Event_menu);
+                                event_det_textview_money.setText(Event_Budget);
+                                String front_counters = "Upto"+Event_Counter+" Counters";
+                                event_det_textview_counters.setText(front_counters);
+                                String front_money = "Approx Budget "+Event_Budget+" ₹";
+                                event_det_textview_money.setText(front_money);
+
+                                try
+                                {
+                                    Picasso.get().load(Event_ImgLink).into(singleeventdetails_imageview);
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+
+                                Log.i("Lootdata", "Information "+Event_Name+", "+Event_Desc+", "+Event_menu+", "+Event_Counter+", "+Event_Budget);
+                            }
+                        }
+                        //End ProgressBar (Set visibility to GONE)
+                        Log.i("PutData", result);
+                    }
+                }
+                //End Write and Read data with URL
+            }
+        });
+        //End of handler
+
     }
 }
