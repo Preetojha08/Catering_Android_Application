@@ -101,7 +101,7 @@ public class Welcome_Activity extends AppCompatActivity {
         forgot_pass_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                img_view_google.callOnClick();
+                startActivity(new Intent(Welcome_Activity.this,ForgotPasswordActivity.class));
             }
         });
 
