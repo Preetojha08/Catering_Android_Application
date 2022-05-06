@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +31,7 @@ public class EventActivity extends AppCompatActivity {
     List<ModelClass> events_data_list;
 
     private static final String URL_PRODUCTS ="https://preetojhadatabasetrail.000webhostapp.com/catering_project/fetch_event_data.php";
-
+    ProgressBar progressbar_events_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,11 @@ public class EventActivity extends AppCompatActivity {
         event_recyclerView.setHasFixedSize(true);
         event_recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-/*
+        progressbar_events_data=(ProgressBar)findViewById(R.id.spin_kit_progress_bar_events_data);
+        Sprite wave = new DoubleBounce();
+        progressbar_events_data.setIndeterminateDrawable(wave);
+        progressbar_events_data.setVisibility(View.VISIBLE);
+        /*
 
          List<String> event_title;
          List<Integer> event_img;
@@ -107,6 +114,7 @@ public class EventActivity extends AppCompatActivity {
 
                     recyclerViewAdapter = new RecyclerViewAdapter(EventActivity.this, events_data_list,30);
                     event_recyclerView.setAdapter(recyclerViewAdapter);
+                    progressbar_events_data.setVisibility(View.GONE);
 
 
                 } catch (JSONException e) {

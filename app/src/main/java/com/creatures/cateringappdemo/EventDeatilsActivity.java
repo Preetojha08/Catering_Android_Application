@@ -110,7 +110,7 @@ public class EventDeatilsActivity extends AppCompatActivity {
                                 event_det_textview_heading.setText(Event_Name);
                                 event_desc.setText(Event_Desc);
                                 event_det_textview_items.setText(Event_menu);
-                                String front_counters = "Upto"+Event_Counter+" Counters";
+                                String front_counters = "Upto "+Event_Counter+" Counters";
                                 event_det_textview_counters.setText(front_counters);
                                 String front_money = "Approx Budget "+Event_Budget+" ₹";
                                 event_det_textview_money.setText(front_money);
@@ -134,7 +134,7 @@ public class EventDeatilsActivity extends AppCompatActivity {
                                 event_desc.setText(Event_Desc);
                                 event_det_textview_items.setText(Event_menu);
                                 event_det_textview_money.setText(Event_Budget);
-                                String front_counters = "Upto"+Event_Counter+" Counters";
+                                String front_counters = "Upto "+Event_Counter+" Counters";
                                 event_det_textview_counters.setText(front_counters);
                                 String front_money = "Approx Budget "+Event_Budget+" ₹";
                                 event_det_textview_money.setText(front_money);

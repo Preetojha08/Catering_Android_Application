@@ -20,14 +20,6 @@
             android:background="@color/colorPrimaryDark"
             app:titleTextColor="@color/white"/>
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:theme="@style/RedAccent"
-            android:layout_centerInParent="true"
-            android:id="@+id/progress_bar_profile"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_below="@+id/toolbar_profile"
@@ -99,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/akaya_telivigala"
                     android:text="2"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -130,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/akaya_telivigala"
                     android:text="0"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -151,6 +143,10 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:adjustViewBounds="true"
+                    app:boxBackgroundColor="@color/purple_500"
+                    android:textColor="@color/purple_500"
+                    app:boxStrokeColor="@color/purple_500"
+                    android:textColorHint="@color/purple_500"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -158,6 +154,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
+                        android:textColor="@color/purple_500"
+                        android:textColorHint="@color/purple_500"
                         android:id="@+id/text_input_edit_text_profile_user_name"
                         android:adjustViewBounds="true"
                         android:drawableLeft="@drawable/user_img"
@@ -168,7 +166,11 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/purple_500"
+                    android:textColorHint="@color/purple_500"
+                    app:boxBackgroundColor="@color/purple_500"
                     android:layout_width="match_parent"
+                    app:boxStrokeColor="@color/purple_500"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -176,6 +178,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
+                        android:textColor="@color/purple_500"
+                        android:textColorHint="@color/purple_500"
                         android:id="@+id/text_input_edit_text_profile_user_mail"
                         android:drawableLeft="@drawable/mailcopy"
                         android:drawablePadding="@dimen/_10sdp"
@@ -186,6 +190,10 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/_10sdp"
+                    app:boxStrokeColor="@color/purple_500"
+                    android:theme="@style/RedAccent"
+                    android:textColor="@color/purple_500"
+                    android:textColorHint="@color/purple_500"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -203,6 +211,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:theme="@style/RedAccent"
+                    app:boxStrokeColor="@color/purple_500"
                     android:layout_marginBottom="@dimen/_23sdp"
                     android:layout_height="wrap_content">
 
@@ -211,6 +221,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
+                        android:textColor="@color/purple_500"
+                        android:textColorHint="@color/purple_500"
                         android:id="@+id/text_input_edit_text_profile_user_password"
                         android:drawableLeft="@drawable/keycopy"
                         android:drawablePadding="@dimen/_10sdp"
@@ -229,6 +241,15 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/progress_bar_profile"
+            android:theme="@style/RedAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:SpinKit_Color="@color/purple_500" />
 
     </RelativeLayout>
 

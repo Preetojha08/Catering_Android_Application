@@ -47,7 +47,7 @@
                     android:forceDarkAllowed="true"
                     android:padding="@dimen/_10sdp"
                     android:fontFamily="@font/abril_fatface"
-                    android:text="fast Food"
+                    android:text="Event Name"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_20sdp" />

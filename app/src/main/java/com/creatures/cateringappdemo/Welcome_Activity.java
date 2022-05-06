@@ -21,6 +21,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
+import com.github.ybq.android.spinkit.style.Wave;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -37,6 +40,8 @@ public class Welcome_Activity extends AppCompatActivity {
     TextView register_textview,login_textview;
 
     ImageView welcome_skip_iv;
+    ImageView img_view_google,img_view_fb;
+    TextView forgot_pass_tv;
 
     TextInputEditText tiet_username,tiet_password,tiet_mobile_no,tiet_con_password,tiet_email;
     TextInputEditText tiet_log_username,tiet_log_password;
@@ -72,6 +77,33 @@ public class Welcome_Activity extends AppCompatActivity {
         welcome_layout=(LinearLayout)findViewById(R.id.welcome_layout);
 
         progress_bar_reg=(ProgressBar)findViewById(R.id.progress_bar_reg);
+//        Sprite wave = new DoubleBounce();
+//        progress_bar_reg.setIndeterminateDrawable(wave);
+
+        img_view_google=(ImageView)findViewById(R.id.imgview_google_login);
+        img_view_fb=(ImageView)findViewById(R.id.imgview_facebook_login);
+        forgot_pass_tv=(TextView)findViewById(R.id.text_view_forgot_password);
+
+        img_view_google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Welcome_Activity.this, "This Functionality Will Added Soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        img_view_fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                img_view_google.callOnClick();
+            }
+        });
+
+        forgot_pass_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                img_view_google.callOnClick();
+            }
+        });
 
         view_bg_color=(View)findViewById(R.id.view_background_for_processbar);
 
@@ -360,9 +392,9 @@ public class Welcome_Activity extends AppCompatActivity {
 
 
                 view_bg_color.setVisibility(View.GONE);
-                log_username=tiet_log_username.getText().toString();
-                log_password=tiet_log_password.getText().toString();
-                log_email=tiet_log_username.getText().toString();
+                log_username=tiet_log_username.getText().toString().trim();
+                log_password=tiet_log_password.getText().toString().trim();
+                log_email=tiet_log_username.getText().toString().trim();
 
                 if (log_username.isEmpty() || log_password.isEmpty())
                 {

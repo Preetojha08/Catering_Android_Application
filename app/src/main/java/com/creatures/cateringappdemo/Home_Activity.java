@@ -192,13 +192,13 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
 
     }
 
-    @Override
+/*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater= getMenuInflater();
         menuInflater.inflate(R.menu.top_menu, menu);
 
         MenuItem item=menu.findItem(R.id.nav_search);
-       /* SearchView searchView = (SearchView) item.getActionView();
+       *//* SearchView searchView = (SearchView) item.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -209,7 +209,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
             public boolean onQueryTextChange(String newText) {
                 return false;
             }
-        });*/
+        });*//*
         return true;
     }
 
@@ -223,7 +223,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 break;
         }
         return true;
-    }
+    }*/
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -8,25 +8,18 @@
     tools:context=".Welcome_Activity">
 
     <View
-        android:id="@+id/view_background_for_processbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.5"
-        android:background="@color/purple_200" />
-
-    <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.2"
         android:background="@drawable/bg" />
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <View
+        android:id="@+id/view_background_for_processbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
         android:visibility="gone"
-        android:theme="@style/RedAccent"
-        android:layout_centerInParent="true"
-        android:id="@+id/progress_bar_reg"/>
+        android:background="@color/purple_200" />
 
     <ImageView
         android:id="@+id/welcome_logo_image_view"
@@ -437,5 +430,16 @@
         android:layout_marginHorizontal="@dimen/_5sdp"
         android:layout_marginVertical="@dimen/_5sdp"
         android:src="@drawable/skip" />
+
+    <ProgressBar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/progress_bar_reg"
+        android:visibility="gone"
+        android:theme="@style/RedAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:SpinKit_Color="@color/purple_500" />
+
 
 </RelativeLayout>
