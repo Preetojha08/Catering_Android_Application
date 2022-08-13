@@ -205,6 +205,8 @@
                         android:drawableLeft="@drawable/phonecopy"
                         android:drawablePadding="@dimen/_10sdp"
                         android:inputType="text"
+                        android:textColor="@color/purple_500"
+                        android:textColorHint="@color/purple_500"
                         android:text="9898987676" />
                 </com.google.android.material.textfield.TextInputLayout>
 
