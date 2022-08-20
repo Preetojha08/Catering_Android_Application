@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -29,6 +30,8 @@ public class EventActivity extends AppCompatActivity {
     RecyclerViewAdapter recyclerViewAdapter;
     RecyclerView event_recyclerView;
     List<ModelClass> events_data_list;
+
+
 
     private static final String URL_PRODUCTS ="https://preetojhadatabasetrail.000webhostapp.com/catering_project/fetch_event_data.php";
     ProgressBar progressbar_events_data;

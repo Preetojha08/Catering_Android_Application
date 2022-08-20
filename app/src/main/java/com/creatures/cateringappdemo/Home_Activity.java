@@ -6,31 +6,52 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Home_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,6 +79,10 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
     public static final String MyPREFERENCES = "MyPREFERENCES" ;
     int logout_counter=0;
 
+    ImageView singleeventdetails_imageview;
+    int event_id;
+    String event_name,event_Desc,event_ImgLink;
+    private static final String URL_PRODUCTS ="https://preetojhadatabasetrail.000webhostapp.com/catering_project/notification_event.php";
 
 
     @Override
@@ -189,7 +214,107 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
+        LoadEventData();
 
+        /////
+        NotificationChannel();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 00);
+        calendar.set(Calendar.MINUTE, 17);
+        calendar.set(Calendar.SECOND, 30);
+
+        if (Calendar.getInstance().after(calendar)) {
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        Intent intent = new Intent(Home_Activity.this, MemoBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+        }
+        /////
+
+    }
+
+    ////
+    private void NotificationChannel() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "CATERINGAPP";
+            String description = "CATERINGAPP`S CHANNEL";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("Notification", name, importance);
+            channel.setDescription(description);
+
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+        }
+    }
+    ////
+
+    private void LoadEventData()
+    {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_PRODUCTS, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray array = new JSONArray(response);
+
+                    for (int i = 0; i < array.length(); i++) {
+
+                        //getting product object from json array
+                        JSONObject events_data_obj = array.getJSONObject(i);
+
+
+                        event_id=events_data_obj.getInt("event_id");
+                        event_name=events_data_obj.getString("event_name");
+                        event_Desc=events_data_obj.getString("event_desc");
+                        event_ImgLink=events_data_obj.getString("event_img_link");
+
+
+                        Notification(event_name,event_Desc,event_ImgLink);
+                        Log.i("Notification Data","Event Details: "+event_id+" "+event_name+" ");
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    public void Notification(String ename,String eventdesc,String imagelink) {
+        // Set Notification Title
+        String strtitle = ename;
+        String strtext = eventdesc;
+        Intent intent = new Intent(this, EventActivity.class);
+        intent.putExtra("title", strtitle);
+        intent.putExtra("text", strtext);
+        PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.catering_application)
+                .setContentTitle(strtitle)
+                .setContentText(strtext)
+                .addAction(R.drawable.catering_application, "Action Button", pIntent)
+                .setContentIntent(pIntent) .setAutoCancel(true);
+        NotificationManager notificationmanager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationmanager.notify(0, builder.build());
+        Log.i("Notification Data 2:","Event Details: "+event_id+" "+event_name+" ");
     }
 
 /*    @Override
